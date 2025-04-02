@@ -17,7 +17,6 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 ruta = r'C:\docs\DOCTORADO\Machine_Learning/tornados.csv'  
 df = pd.read_csv(ruta)  
-
 ------------------
 
 

@@ -18,7 +18,6 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ruta = r'C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv'  
 df = pd.read_csv(ruta)  
 df.isnull().sum()
-
 ------------------
 
 

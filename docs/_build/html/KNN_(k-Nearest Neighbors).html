@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My Jupyter Book</title>
+    <title>Cargue de Datos para el Modelo K-Nearest Neighbors - KNN &#8212; My Jupyter Book</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'KNN_(k-Nearest Neighbors)';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="Regresion_Lasso.html" />
+    <link rel="next" title="Cargue de Datos para el Modelo Regresión Lineal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html" />
+    <link rel="prev" title="Cargue de Datos para el Modelo Regresión Lasso" href="Regresion_Lasso.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,17 +173,17 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">IMPORTACIÓN DE LOS DATOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Modelo Naive Bayes</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">Importación de los Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Carga de los Datos para el modelo Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Cargue de Datos para el Modelo Autoencoders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM_%20%28Support%20Vector%20Machine%29.html">Cargue de Datos para el Modelo Support Vector Machine - SVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Cargue de Datos para el Modelo Red Neuronal Recurrente - RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Cargue de Datos para el Modelo Regresión Lasso</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Autoencoders</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM_%20%28Support%20Vector%20Machine%29.html">Máquinas de soporte vectorial (SVM)</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Redes Neuronales Recurrentes RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
 </ul>
 
     </div>
@@ -322,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -331,7 +331,13 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-k-nearest-neighbors">KNN - (K-Nearest Neighbors)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">Regresión Lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">Regresión Ridge</a></li>
 </ul>
 
             </nav>
@@ -344,7 +350,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="cargue-de-datos-para-el-modelo-k-nearest-neighbors-knn">
+<h1>Cargue de Datos para el Modelo K-Nearest Neighbors - KNN<a class="headerlink" href="#cargue-de-datos-para-el-modelo-k-nearest-neighbors-knn" title="Link to this heading">#</a></h1>
+<section id="knn-k-nearest-neighbors">
+<h2>KNN - (K-Nearest Neighbors)<a class="headerlink" href="#knn-k-nearest-neighbors" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
@@ -359,14 +369,10 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 
-
-
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
-
-
 
 <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>  
@@ -377,11 +383,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">24</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
-<span class="ne">---&gt; </span><span class="mi">24</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>  
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>  
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
@@ -495,37 +501,6 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mglearn</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mglearn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (0.2.0)
-Requirement already satisfied: numpy in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.25.2)
-Requirement already satisfied: matplotlib in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (3.7.2)
-Requirement already satisfied: scikit-learn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.0)
-Requirement already satisfied: pandas in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.2.3)
-Requirement already satisfied: pillow in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (10.0.0)
-Requirement already satisfied: cycler in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (0.11.0)
-Requirement already satisfied: imageio in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.31.2)
-Requirement already satisfied: joblib in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.1.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (4.42.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (23.1)
-Requirement already satisfied: pyparsing&lt;3.1,&gt;=2.3.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (2.8.2)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (6.0.1)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (1.11.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (3.2.0)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;mglearn) (3.16.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;mglearn) (1.16.0)
-Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.3.1 -&gt; 25.0.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -731,37 +706,6 @@ Best parameters:  {&#39;n_neighbors&#39;: 19}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mglearn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (0.2.0)
-Requirement already satisfied: numpy in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.25.2)
-Requirement already satisfied: matplotlib in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (3.7.2)
-Requirement already satisfied: scikit-learn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.0)
-Requirement already satisfied: pandas in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.2.3)
-Requirement already satisfied: pillow in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (10.0.0)
-Requirement already satisfied: cycler in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (0.11.0)
-Requirement already satisfied: imageio in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.31.2)
-Requirement already satisfied: joblib in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.1.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (4.42.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (23.1)
-Requirement already satisfied: pyparsing&lt;3.1,&gt;=2.3.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (2.8.2)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (6.0.1)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
-Requirement already satisfied: scipy&gt;=1.5.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (1.11.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (3.2.0)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;mglearn) (3.16.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;mglearn) (1.16.0)
-Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.3.1 -&gt; 25.0.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,36 +717,6 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">neighbors</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: neighbors in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (0.1.0)
-Requirement already satisfied: numpy in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (1.25.2)
-Requirement already satisfied: pandas&gt;=1.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (2.2.3)
-Requirement already satisfied: scipy in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (1.11.2)
-Requirement already satisfied: matplotlib in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (3.7.2)
-Requirement already satisfied: seaborn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (0.13.2)
-Requirement already satisfied: numba in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from neighbors) (0.60.0)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas&gt;=1.0-&gt;neighbors) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas&gt;=1.0-&gt;neighbors) (2023.3)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas&gt;=1.0-&gt;neighbors) (2023.3)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (1.1.0)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (0.11.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (4.42.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (23.1)
-Requirement already satisfied: pillow&gt;=6.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (10.0.0)
-Requirement already satisfied: pyparsing&lt;3.1,&gt;=2.3.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (3.0.9)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;neighbors) (6.0.1)
-Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from numba-&gt;neighbors) (0.43.0)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;neighbors) (3.16.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.0-&gt;neighbors) (1.16.0)
-Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.3.1 -&gt; 25.0.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -1246,7 +1160,10 @@ RMSLE Valid: 0.06850015437688937
 <div class="cell_output docutils container">
 </div>
 </div>
-<p>REGRESIÓN LINEAL</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="regresion-lineal">
+<h1>Regresión Lineal<a class="headerlink" href="#regresion-lineal" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
@@ -1476,7 +1393,9 @@ Puntuación R^2 en el conjunto de prueba: 0.6574705265235996
 <img alt="_images/87b720b2ee18b1a86a60e6aa7a9a4cd297f02fe9eb60e0e85e93a4ceeb1853eb.png" src="_images/87b720b2ee18b1a86a60e6aa7a9a4cd297f02fe9eb60e0e85e93a4ceeb1853eb.png" />
 </div>
 </div>
-<p>Regresión ridge</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="regresion-ridge">
+<h1>Regresión Ridge<a class="headerlink" href="#regresion-ridge" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
@@ -1626,32 +1545,6 @@ Intercepto del modelo ridge01:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: seaborn in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (0.13.2)
-Requirement already satisfied: numpy!=1.24.0,&gt;=1.20 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from seaborn) (1.25.2)
-Requirement already satisfied: pandas&gt;=1.2 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from seaborn) (2.2.3)
-Requirement already satisfied: matplotlib!=3.6.1,&gt;=3.4 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from seaborn) (3.7.2)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.1.0)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (0.11.0)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (4.42.1)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.4.5)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (23.1)
-Requirement already satisfied: pillow&gt;=6.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (10.0.0)
-Requirement already satisfied: pyparsing&lt;3.1,&gt;=2.3.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.0.9)
-Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (2.8.2)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (6.0.1)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2023.3)
-Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from pandas&gt;=1.2-&gt;seaborn) (2023.3)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (3.16.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\wmanj\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib!=3.6.1,&gt;=3.4-&gt;seaborn) (1.16.0)
-Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 24.3.1 -&gt; 25.0.1
-[notice] To update, run: python.exe -m pip install --upgrade pip
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1659,7 +1552,6 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
-
 
 <span class="c1"># Establecer el tamaño de la fuente</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
@@ -1698,6 +1590,7 @@ Note: you may need to restart the kernel to use updated packages.
 <img alt="_images/4ea9a8edbcb261b5f7cbdc79d8c3235f1bbdbe4692b67570ace1770922bba96a.png" src="_images/4ea9a8edbcb261b5f7cbdc79d8c3235f1bbdbe4692b67570ace1770922bba96a.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1735,7 +1628,7 @@ Note: you may need to restart the kernel to use updated packages.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Cargue de Datos para el Modelo Regresión Lasso</p>
       </div>
     </a>
     <a class="right-next"
@@ -1743,7 +1636,7 @@ Note: you may need to restart the kernel to use updated packages.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Cargue de Datos para el Modelo Regresión Lineal</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1762,7 +1655,13 @@ Note: you may need to restart the kernel to use updated packages.
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-k-nearest-neighbors">KNN - (K-Nearest Neighbors)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-lineal">Regresión Lineal</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-ridge">Regresión Ridge</a></li>
 </ul>
 
   </nav></div>

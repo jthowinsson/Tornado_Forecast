@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modelo Naive Bayes &#8212; My Jupyter Book</title>
+    <title>Carga de los Datos para el modelo Naive Bayes &#8212; My Jupyter Book</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Naive_Bayes';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Autoencoders" href="Autoencoders.html" />
-    <link rel="prev" title="IMPORTACIÓN DE LOS DATOS" href="Tornados_EDA.html" />
+    <link rel="next" title="Cargue de Datos para el Modelo Autoencoders" href="Autoencoders.html" />
+    <link rel="prev" title="Importación de los Datos" href="Tornados_EDA.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,16 +174,16 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">IMPORTACIÓN DE LOS DATOS</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelo Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">Importación de los Datos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Carga de los Datos para el modelo Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Cargue de Datos para el Modelo Autoencoders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVM_%20%28Support%20Vector%20Machine%29.html">Cargue de Datos para el Modelo Support Vector Machine - SVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Cargue de Datos para el Modelo Red Neuronal Recurrente - RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Cargue de Datos para el Modelo Regresión Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Autoencoders</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SVM_%20%28Support%20Vector%20Machine%29.html">Máquinas de soporte vectorial (SVM)</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Redes Neuronales Recurrentes RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
 </ul>
 
     </div>
@@ -322,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modelo Naive Bayes</h1>
+    <h1>Carga de los Datos para el modelo Naive Bayes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -332,14 +332,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelo Naive Bayes</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-balanceado-con-smote">Naive Bayes balanceado con SMOTE</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de algoritmos de optimización</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-fit-para-entrenamiento-por-lotes">Partial_fit() para entrenamiento por lotes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-naive-bayes">Modelo Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-balanceado-con-smote">Naive Bayes Balanceado con SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de Algoritmos de Optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-fit-para-entrenamiento-por-lotes">Partial_fit() para entrenamiento por lotes.</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -350,7 +349,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="carga-de-los-datos-para-el-modelo-naive-bayes">
+<h1>Carga de los Datos para el modelo Naive Bayes<a class="headerlink" href="#carga-de-los-datos-para-el-modelo-naive-bayes" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
@@ -364,8 +365,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-
-
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
@@ -384,7 +383,7 @@ document.write(`
 </div>
 </div>
 <section id="modelo-naive-bayes">
-<h1>Modelo Naive Bayes<a class="headerlink" href="#modelo-naive-bayes" title="Link to this heading">#</a></h1>
+<h2>Modelo Naive Bayes<a class="headerlink" href="#modelo-naive-bayes" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ml</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -814,10 +813,12 @@ weighted avg       0.97      0.94      0.95     12456
 </div>
 <p>La curva ROC del modelo Naive Bayes muestra un desempeño general bastante sólido, con un AUC de 0.91, lo que indica una buena capacidad para distinguir entre tornados que causan muertes y los que no. La curva se eleva rápidamente hacia la esquina superior izquierda, lo cual es deseable, ya que sugiere una alta tasa de verdaderos positivos frente a una baja tasa de falsos positivos.</p>
 <p>Sin embargo, al analizar en conjunto con las métricas de desempeño:</p>
-<p>Accuracy: 0.9363</p>
-<p>Precision: 0.3100</p>
-<p>Recall: 0.6907</p>
-<p>F1-score: 0.4280</p>
+<ul class="simple">
+<li><p>Accuracy: 0.9363</p></li>
+<li><p>Precision: 0.3100</p></li>
+<li><p>Recall: 0.6907</p></li>
+<li><p>F1-score: 0.4280</p></li>
+</ul>
 <p>vemos que, aunque el modelo logra detectar correctamente casi el 69% de los casos de muerte (recall), su precisión es baja (31%), lo que implica que comete muchos falsos positivos. Esto es menos preocupante en este contexto, ya que es preferible activar una alerta innecesaria que ignorar un tornado mortal.</p>
 <p>No obstante, es importante señalar que el 31% de precisión también implica que el 69% de las alertas serán falsas, lo que puede generar desgaste institucional o desconfianza si se traduce en acciones preventivas costosas o alarmistas. Además, aunque el recall es bueno, todavía se escapan casi un tercio de las muertes reales, lo cual representa un riesgo crítico.</p>
 <div class="cell docutils container">
@@ -850,7 +851,7 @@ Name: proportion, dtype: float64
 Por esta razón, se aplicó SMOTE exclusivamente al conjunto de entrenamiento, generando instancias sintéticas de la clase minoritaria. Con esta estrategia se espera que el modelo aprenda patrones más representativos de los eventos mortales, mejorando así su capacidad para detectar correctamente dichos casos sin alterar la integridad del conjunto de prueba.</p>
 </section>
 <section id="naive-bayes-balanceado-con-smote">
-<h1>Naive Bayes balanceado con SMOTE<a class="headerlink" href="#naive-bayes-balanceado-con-smote" title="Link to this heading">#</a></h1>
+<h2>Naive Bayes Balanceado con SMOTE<a class="headerlink" href="#naive-bayes-balanceado-con-smote" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -984,9 +985,9 @@ weighted avg       0.96      0.91      0.93     12456
 <p>Al aplicar SMOTE para balancear las clases, el modelo mejora levemente en recall, pero sufre una fuerte caída en precisión. El resultado es un F1-score menor al del modelo original. Dado que la ganancia en detección de positivos no compensa la pérdida de precisión, esta versión no supera al Naive Bayes sin SMOTE. Se generan demasiados falsos positivos, lo cual puede ser problemático en escenarios donde las alertas falsas tienen un costo.</p>
 </section>
 <section id="aplicacion-de-algoritmos-de-optimizacion">
-<h1>Aplicación de algoritmos de optimización<a class="headerlink" href="#aplicacion-de-algoritmos-de-optimizacion" title="Link to this heading">#</a></h1>
+<h2>Aplicación de Algoritmos de Optimización<a class="headerlink" href="#aplicacion-de-algoritmos-de-optimizacion" title="Link to this heading">#</a></h2>
 <section id="partial-fit-para-entrenamiento-por-lotes">
-<h2>Partial_fit() para entrenamiento por lotes.<a class="headerlink" href="#partial-fit-para-entrenamiento-por-lotes" title="Link to this heading">#</a></h2>
+<h3>Partial_fit() para entrenamiento por lotes.<a class="headerlink" href="#partial-fit-para-entrenamiento-por-lotes" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -1094,6 +1095,7 @@ weighted avg       0.96      0.97      0.97     12456
 <p>Para este caso específico, no se justifica el uso de partial_fit() en términos de eficiencia, ya que la carga computacional no es suficientemente alta como para que el entrenamiento por lotes tenga impacto. No obstante, esta técnica puede resultar útil en escenarios futuros donde se disponga de datos en streaming o conjuntos de entrenamiento que no pueden cargarse completamente en memoria.</p>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1131,7 +1133,7 @@ weighted avg       0.96      0.97      0.97     12456
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">IMPORTACIÓN DE LOS DATOS</p>
+        <p class="prev-next-title">Importación de los Datos</p>
       </div>
     </a>
     <a class="right-next"
@@ -1139,7 +1141,7 @@ weighted avg       0.96      0.97      0.97     12456
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Autoencoders</p>
+        <p class="prev-next-title">Cargue de Datos para el Modelo Autoencoders</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1159,14 +1161,13 @@ weighted avg       0.96      0.97      0.97     12456
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelo Naive Bayes</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-balanceado-con-smote">Naive Bayes balanceado con SMOTE</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de algoritmos de optimización</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-fit-para-entrenamiento-por-lotes">Partial_fit() para entrenamiento por lotes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelo-naive-bayes">Modelo Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes-balanceado-con-smote">Naive Bayes Balanceado con SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de Algoritmos de Optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-fit-para-entrenamiento-por-lotes">Partial_fit() para entrenamiento por lotes.</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
