@@ -1,0 +1,13 @@
+# Build directories
+docs/_build/
+docs/cache/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Large generated files
+*.doctree
+*.pickle
+
+# Temporary files
+*.log
