@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Tornados_EDA
+- file: Naive_Bayes
+- file: Autoencoders
+- file: SVM_ (Support Vector Machine)
+- file: RNN_(Red Neuronal Recurrente)
+- file: Regresion_Lasso
+- file: KNN_(k-Nearest Neighbors)
+- file: RIDGE_(Regresión con Penalización L2)
