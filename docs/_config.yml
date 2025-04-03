@@ -1,6 +1,11 @@
 title: "Tornado Forecast"
-author: "Tu Nombre"
-logo: "_static/Logo_Tornados.png"
+author: "Jesús D. Zamora Th., Gregory J. Melendéz A., Yliceth Ramos, DLH"
+logo: "Logo_Tornados.png"
+
+repository:
+  url: "https://github.com/jthowinsson/Tornado_Forecast"
+  branch: main
+
 html:
   use_repository_button: true
   use_issues_button: true
