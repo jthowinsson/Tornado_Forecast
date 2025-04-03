@@ -12,3 +12,5 @@ chapters:
 - file: Regresion_Lasso
 - file: KNN_(k-Nearest Neighbors)
 - file: RIDGE_(Regresión con Penalización L2)
+- file: Árbol de Decisión (Decision Tree)
+- file: Lasso_RidgeL_Logistic_Regression_L1__L2
