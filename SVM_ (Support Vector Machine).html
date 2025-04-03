@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Máquinas de soporte vectorial (SVM) &#8212; My Jupyter Book</title>
+    <title>Cargue de Datos para el Modelo Support Vector Machine - SVM &#8212; My Jupyter Book</title>
   
   
   
@@ -60,8 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'SVM_ (Support Vector Machine)';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Redes Neuronales Recurrentes RNN" href="RNN_%28Red%20Neuronal%20Recurrente%29.html" />
-    <link rel="prev" title="Autoencoders" href="Autoencoders.html" />
+    <link rel="next" title="Cargue de Datos para el Modelo Red Neuronal Recurrente - RNN" href="RNN_%28Red%20Neuronal%20Recurrente%29.html" />
+    <link rel="prev" title="Cargue de Datos para el Modelo Autoencoders" href="Autoencoders.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,16 +174,16 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">IMPORTACIÓN DE LOS DATOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Modelo Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">Importación de los Datos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Carga de los Datos para el modelo Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Cargue de Datos para el Modelo Autoencoders</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cargue de Datos para el Modelo Support Vector Machine - SVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Cargue de Datos para el Modelo Red Neuronal Recurrente - RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Cargue de Datos para el Modelo Regresión Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Autoencoders</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Máquinas de soporte vectorial (SVM)</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">Redes Neuronales Recurrentes RNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
 </ul>
 
     </div>
@@ -322,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Máquinas de soporte vectorial (SVM)</h1>
+    <h1>Cargue de Datos para el Modelo Support Vector Machine - SVM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -332,17 +332,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Máquinas de soporte vectorial (SVM)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-class-weight-balanced">SVM class_weight=’balanced</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-balanceado-con-smote">SVM balanceado con SMOTE</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de algoritmos de optimización</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico">SGD SVM SGDClassifier (descenso de gradiente estocástico)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearsvc">LinearSVC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rbf-con-random-fourier-features">RBF con Random Fourier Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-soporte-vectorial-svm">Máquinas de Soporte Vectorial (SVM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-class-weight-balanced">SVM Class_Weight=’Balanced</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-balanceado-con-smote">SVM Balanceado con SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de Algoritmos de Optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico">SGD SVM SGDClassifier (descenso de gradiente estocástico)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-svc">Linear SVC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rbf-con-random-fourier-features">RBF con Random Fourier Features</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -353,7 +352,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="cargue-de-datos-para-el-modelo-support-vector-machine-svm">
+<h1>Cargue de Datos para el Modelo Support Vector Machine - SVM<a class="headerlink" href="#cargue-de-datos-para-el-modelo-support-vector-machine-svm" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
@@ -367,8 +368,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-
-
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
@@ -453,7 +452,7 @@ document.write(`
 </div>
 </div>
 <section id="maquinas-de-soporte-vectorial-svm">
-<h1>Máquinas de soporte vectorial (SVM)<a class="headerlink" href="#maquinas-de-soporte-vectorial-svm" title="Link to this heading">#</a></h1>
+<h2>Máquinas de Soporte Vectorial (SVM)<a class="headerlink" href="#maquinas-de-soporte-vectorial-svm" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -583,7 +582,7 @@ weighted avg       0.97      0.97      0.96     12456
 <p>La curva ROC del modelo SVM con kernel lineal muestra un AUC de 0.90, lo cual en apariencia sugiere una muy buena capacidad para discriminar entre tornados con y sin víctimas mortales. Sin embargo, esta impresión positiva se desmiente al observar las métricas detalladas del modelo: aunque la accuracy es alta (0.9684) y la precision es perfecta (1.0), el recall es extremadamente bajo (0.0837), lo que significa que el modelo solo identifica correctamente el 8.3% de los casos con muertes reales. Esto se traduce en un F1-score de apenas 0.1545. En términos prácticos, el modelo evita falsos positivos a toda costa, pero a cambio deja pasar la mayoría de los eventos críticos que sí causaron muertes. En contextos donde lo más importante es anticipar y salvar vidas, este comportamiento es inaceptable, y por tanto, el modelo resulta inadecuado a pesar de su buena curva ROC.</p>
 </section>
 <section id="svm-class-weight-balanced">
-<h1>SVM class_weight=’balanced<a class="headerlink" href="#svm-class-weight-balanced" title="Link to this heading">#</a></h1>
+<h2>SVM Class_Weight=’Balanced<a class="headerlink" href="#svm-class-weight-balanced" title="Link to this heading">#</a></h2>
 <p>Aplicaremos class_weight=’balanced’ para buscar un mejor recall para la clase 1:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,7 +692,7 @@ weighted avg       0.97      0.90      0.93     12456
 <p>Este modelo sobresale en recall, siendo de los que mejor identifica las muertes (84%). No obstante, su baja precisión sugiere que también genera muchas falsas alarmas. En un contexto donde lo más importante es no dejar pasar eventos con víctimas, es preferible tener este tipo de error. Sin embargo, el costo computacional es alto (197 s), lo que puede limitar su uso en entornos de tiempo real.</p>
 </section>
 <section id="svm-balanceado-con-smote">
-<h1>SVM balanceado con SMOTE<a class="headerlink" href="#svm-balanceado-con-smote" title="Link to this heading">#</a></h1>
+<h2>SVM Balanceado con SMOTE<a class="headerlink" href="#svm-balanceado-con-smote" title="Link to this heading">#</a></h2>
 <p>Ahora vamos a probar con Smote</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,9 +836,9 @@ weighted avg       0.97      0.97      0.97     12456
 <p>Aunque el modelo puede tener alta precisión o exactitud general (accuracy), si falla en detectar los positivos (muertes), no sería útil desde el punto de vista práctico o de negocio.</p>
 </section>
 <section id="aplicacion-de-algoritmos-de-optimizacion">
-<h1>Aplicación de algoritmos de optimización<a class="headerlink" href="#aplicacion-de-algoritmos-de-optimizacion" title="Link to this heading">#</a></h1>
+<h2>Aplicación de Algoritmos de Optimización<a class="headerlink" href="#aplicacion-de-algoritmos-de-optimizacion" title="Link to this heading">#</a></h2>
 <section id="sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico">
-<h2>SGD SVM SGDClassifier (descenso de gradiente estocástico)<a class="headerlink" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico" title="Link to this heading">#</a></h2>
+<h3>SGD SVM SGDClassifier (descenso de gradiente estocástico)<a class="headerlink" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SGDClassifier</span>
@@ -948,8 +947,8 @@ weighted avg       0.97      0.97      0.96     12456
 </div>
 <p>Este modelo es muy conservador, similar al SVM sin SMOTE. Prefiere no equivocarse al predecir muertes (alta precisión), pero detecta muy pocas. Es más rápido (0.16 s), pero su bajo recall lo hace inapropiado si el objetivo es proteger vidas.</p>
 </section>
-<section id="linearsvc">
-<h2>LinearSVC<a class="headerlink" href="#linearsvc" title="Link to this heading">#</a></h2>
+<section id="linear-svc">
+<h3>Linear SVC<a class="headerlink" href="#linear-svc" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearSVC</span>
@@ -1056,7 +1055,7 @@ weighted avg       0.97      0.97      0.96     12456
 <p>Al igual que el anterior, este modelo tiene excelente precisión, pero muy bajo recall. Calibrar el modelo mejora la probabilidad estimada, pero no cambia su comportamiento general: no detecta suficientes muertes. Aunque más rápido que otros SVM, no cumple con el objetivo del problema.</p>
 </section>
 <section id="rbf-con-random-fourier-features">
-<h2>RBF con Random Fourier Features<a class="headerlink" href="#rbf-con-random-fourier-features" title="Link to this heading">#</a></h2>
+<h3>RBF con Random Fourier Features<a class="headerlink" href="#rbf-con-random-fourier-features" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.kernel_approximation</span><span class="w"> </span><span class="kn">import</span> <span class="n">RBFSampler</span>
@@ -1175,6 +1174,7 @@ weighted avg       0.93      0.97      0.95     12456
 <p>El modelo falló por completo al clasificar correctamente la clase minoritaria. Posiblemente se debe a una mala configuración del kernel aproximado o problemas con la transformación random Fourier. Totalmente descartado.</p>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1212,7 +1212,7 @@ weighted avg       0.93      0.97      0.95     12456
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Autoencoders</p>
+        <p class="prev-next-title">Cargue de Datos para el Modelo Autoencoders</p>
       </div>
     </a>
     <a class="right-next"
@@ -1220,7 +1220,7 @@ weighted avg       0.93      0.97      0.95     12456
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Redes Neuronales Recurrentes RNN</p>
+        <p class="prev-next-title">Cargue de Datos para el Modelo Red Neuronal Recurrente - RNN</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1240,17 +1240,16 @@ weighted avg       0.93      0.97      0.95     12456
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Máquinas de soporte vectorial (SVM)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-class-weight-balanced">SVM class_weight=’balanced</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-balanceado-con-smote">SVM balanceado con SMOTE</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de algoritmos de optimización</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico">SGD SVM SGDClassifier (descenso de gradiente estocástico)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearsvc">LinearSVC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rbf-con-random-fourier-features">RBF con Random Fourier Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-soporte-vectorial-svm">Máquinas de Soporte Vectorial (SVM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-class-weight-balanced">SVM Class_Weight=’Balanced</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#svm-balanceado-con-smote">SVM Balanceado con SMOTE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplicacion-de-algoritmos-de-optimizacion">Aplicación de Algoritmos de Optimización</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sgd-svm-sgdclassifier-descenso-de-gradiente-estocastico">SGD SVM SGDClassifier (descenso de gradiente estocástico)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-svc">Linear SVC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rbf-con-random-fourier-features">RBF con Random Fourier Features</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
