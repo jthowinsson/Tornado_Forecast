@@ -1,0 +1,6 @@
+title: "Tornado Forecast"
+author: "Tu Nombre"
+logo: "_static/Logo_Tornados.png"
+html:
+  use_repository_button: true
+  use_issues_button: true

@@ -1,2 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+docs/_build/.doctrees/Tornados_EDA.doctree filter=lfs diff=lfs merge=lfs -text
+docs/_build/jupyter_execute/Tornados_EDA.ipynb filter=lfs diff=lfs merge=lfs -text
