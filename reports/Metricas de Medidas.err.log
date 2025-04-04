@@ -1,0 +1,74 @@
+Traceback (most recent call last):
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+from statsmodels.stats.diagnostic import acorr_ljungbox
+from statsmodels.stats.stattools import jarque_bera
+from sklearn.metrics import r2_score, mean_absolute_error, explained_variance_score, mean_squared_error, mean_squared_log_error
+
+# Seleccionar las características y la variable objetivo
+X = tornados_target[['mag', 'slat', 'slon', 'elat', 'elon', 'len', 'wid','fat','f1', 'f2', 'f3', 'f4']]
+y = df['mortality']
+
+# Dividir los datos en conjunto de entrenamiento y prueba
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=66)
+
+# Ahora puedes crear el modelo sin el error
+knn = KNeighborsRegressor(n_neighbors=81)
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+score = knn.score(X_test, y_test)
+
+# Cálculo de métricas
+r2_valid = r2_score(y_test, y_pred)
+mae_valid = mean_absolute_error(y_test, y_pred)
+evs_valid = explained_variance_score(y_test, y_pred, multioutput='uniform_average')
+rmse_valid = np.sqrt(mean_squared_error(y_test, y_pred))
+rmsle_valid = np.sqrt(mean_squared_log_error(y_test, np.abs(y_pred)))  # Evitar valores negativos
+
+# Prueba de Ljung-Box (residuos deben estar disponibles)
+residuos = y_test - y_pred
+ljung_box_test = acorr_ljungbox(residuos, lags=[10], return_df=True)
+
+# Prueba de Jarque-Bera
+jb_test = jarque_bera(residuos)
+
+# Mostrar los resultados
+print('R2 Valid:', r2_valid)
+print('EVS Valid:', evs_valid)
+print('MAE Valid:', mae_valid)
+print('RMSE Valid:', rmse_valid)
+print('RMSLE Valid:', rmsle_valid)
+print('\nLjung-Box Test:')
+print(ljung_box_test)
+print('\nJarque-Bera Test:')
+print(f'Estadístico: {jb_test[0]}, p-valor: {jb_test[1]}')
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[1], line 3[0m
+[0;32m      1[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mpd[39;00m
+[1;32m----> 3[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstats[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdiagnostic[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m acorr_ljungbox
+[0;32m      4[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mstatsmodels[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstats[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstattools[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m jarque_bera
+[0;32m      5[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmetrics[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m r2_score, mean_absolute_error, explained_variance_score, mean_squared_error, mean_squared_log_error
+
+[1;31mModuleNotFoundError[0m: No module named 'statsmodels'
+

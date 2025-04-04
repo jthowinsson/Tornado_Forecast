@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -189,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%C3%81rbol%20de%20Decisi%C3%B3n%20%28Decision%20Tree%29.html">Cargue de Datos Árbol de Desición</a></li>
+
 
 
 
@@ -427,86 +428,41 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/instructorzamora/Documents/3_Maestria_Estadistica_UNINORTE/3_Tercer_Semestre/Machine_Learning/tornados.csv.zip&#39;</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\jthow\iCloudDrive\Documents\3_Maestria_Estadistica_UNINORTE\3_Tercer_Semestre\Machine_Learning\tornados.csv.zip&#39;</span>  
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/instructorzamora/Documents/3_Maestria_Estadistica_UNINORTE/3_Tercer_Semestre/Machine_Learning/tornados.csv.zip&#39;</span>  
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1705,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1703</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1704</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1705</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1706</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1707</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1709</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1710</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1712</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1714</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1715</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1716</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\common.py:784,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">779</span> <span class="c1"># ZIP Compression</span>
-<span class="g g-Whitespace">    </span><span class="mi">780</span> <span class="k">elif</span> <span class="n">compression</span> <span class="o">==</span> <span class="s2">&quot;zip&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">781</span>     <span class="c1"># error: Argument 1 to &quot;_BytesZipFile&quot; has incompatible type</span>
-<span class="g g-Whitespace">    </span><span class="mi">782</span>     <span class="c1"># &quot;Union[str, BaseBuffer]&quot;; expected &quot;Union[Union[str, PathLike[str]],</span>
-<span class="g g-Whitespace">    </span><span class="mi">783</span>     <span class="c1"># ReadBuffer[bytes], WriteBuffer[bytes]]&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">784</span>     <span class="n">handle</span> <span class="o">=</span> <span class="n">_BytesZipFile</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">785</span>         <span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">compression_args</span>  <span class="c1"># type: ignore[arg-type]</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">handle</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;r&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="n">handles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\common.py:1027,</span> in <span class="ni">_BytesZipFile.__init__</span><span class="nt">(self, file, mode, archive_name, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZIP_DEFLATED</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1025</span> <span class="c1"># error: Incompatible types in assignment (expression has type &quot;ZipFile&quot;,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1026</span> <span class="c1"># base class &quot;_BufferedWriter&quot; defined the type as &quot;BytesIO&quot;)</span>
-<span class="ne">-&gt; </span><span class="mi">1027</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">:</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span>  <span class="c1"># type: ignore[assignment]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1028</span>     <span class="n">file</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">   </span><span class="mi">1029</span> <span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\zipfile.py:1250,</span> in <span class="ni">ZipFile.__init__</span><span class="nt">(self, file, mode, compression, allowZip64, compresslevel, strict_timestamps)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1248</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1250</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">filemode</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1251</span>     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1252</span>         <span class="k">if</span> <span class="n">filemode</span> <span class="ow">in</span> <span class="n">modeDict</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/Users/instructorzamora/Documents/3_Maestria_Estadistica_UNINORTE/3_Tercer_Semestre/Machine_Learning/tornados.csv.zip&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>om                  0
+yr                  0
+mo                  0
+dy                  0
+date                0
+time                0
+tz                  0
+datetime_utc        0
+st                  0
+stf                 0
+mag               756
+inj                 0
+fat                 0
+loss            27170
+slat                0
+slon                0
+elat                0
+elon                0
+len                 0
+wid                 0
+ns                  0
+sn                  0
+f1                  0
+f2                  0
+f3                  0
+f4                  0
+fc                  0
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -601,7 +557,7 @@ loss    1.289027e-07
 dtype: float64
 
 Intercepto del modelo Lasso:
-0.7162750490559678
+0.7162750490559711
 </pre></div>
 </div>
 </div>
@@ -649,7 +605,7 @@ loss    1.143144e-07
 dtype: float64
 
 Intercepto del modelo lasso001:
-0.8033124394702692
+0.803312439470272
 </pre></div>
 </div>
 </div>
@@ -697,7 +653,29 @@ loss    1.141645e-07
 dtype: float64
 
 Intercepto del modelo lasso00001:
-0.8018051980000763
+0.8018051980000815
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ridge01</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training set score: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ridge01</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set score: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ridge01</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.59
+Test set score: 0.66
 </pre></div>
 </div>
 </div>
@@ -708,7 +686,6 @@ Intercepto del modelo lasso00001:
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
-
 
 <span class="c1"># Establecer el tamaño de la fuente</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
@@ -744,7 +721,7 @@ Intercepto del modelo lasso00001:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7eda17ac2a43d842968fec79209490a69e1293df3eb592309c2de7908250a77a.png" src="_images/7eda17ac2a43d842968fec79209490a69e1293df3eb592309c2de7908250a77a.png" />
+<img alt="_images/7666f707726e5ab7cf9ca70baeec786ded75ac77eebf3491f85ac16005377e58.png" src="_images/7666f707726e5ab7cf9ca70baeec786ded75ac77eebf3491f85ac16005377e58.png" />
 </div>
 </div>
 </section>

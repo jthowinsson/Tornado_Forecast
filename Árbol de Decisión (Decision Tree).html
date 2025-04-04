@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -189,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cargue de Datos Árbol de Desición</a></li>
+
 
 
 
@@ -390,8 +391,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos Árbol de Desición</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-los-arboles-de-decision">Análisis de los árboles de decisión</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">RANDOM FOREST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-metodo-de-boosting">XGBoost_Método de Boosting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-boosting-classifier">Gradiente Boosting Classifier</a></li>
 </ul>
 
             </nav>
@@ -435,7 +437,7 @@ document.write(`
     <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
 
-<span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
+<span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\jthow\iCloudDrive\Documents\3_Maestria_Estadistica_UNINORTE\3_Tercer_Semestre\Machine_Learning\tornados.csv.zip&#39;</span>  
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span> 
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
@@ -445,71 +447,34 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
-<span class="ne">---&gt; </span><span class="mi">20</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span> 
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1705,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1703</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1704</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1705</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1706</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1707</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1709</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1710</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1712</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1714</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1715</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1716</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\common.py:863,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">863</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">869</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>om              0
+yr              0
+mo              0
+dy              0
+date            0
+time            0
+tz              0
+datetime_utc    0
+st              0
+stf             0
+mag             0
+inj             0
+fat             0
+loss            0
+slat            0
+slon            0
+elat            0
+elon            0
+len             0
+wid             0
+ns              0
+sn              0
+f1              0
+f2              0
+f3              0
+f4              0
+fc              0
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -517,6 +482,33 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mglearn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mglearn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (0.2.0)
+Requirement already satisfied: numpy in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.26.0)
+Requirement already satisfied: matplotlib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (3.8.0)
+Requirement already satisfied: scikit-learn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.6.1)
+Requirement already satisfied: pandas in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.1.1)
+Requirement already satisfied: pillow in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (10.0.1)
+Requirement already satisfied: cycler in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (0.12.1)
+Requirement already satisfied: imageio in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.31.6)
+Requirement already satisfied: joblib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.2.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (4.43.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.4.5)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (23.2)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (2.8.2)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (6.1.1)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: tzdata&gt;=2022.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: scipy&gt;=1.6.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (1.10.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (3.2.0)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;mglearn) (3.17.0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;mglearn) (1.16.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -573,7 +565,9 @@ Cantidad de unos: 1573
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on training set: 1.000
-Accuracy on test set: 1.000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test set: 1.000
 </pre></div>
 </div>
 </div>
@@ -672,6 +666,12 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: graphviz in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (0.20.1)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -695,6 +695,98 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pygraphviz
+  Using cached pygraphviz-1.11.zip (120 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status &#39;done&#39;
+Building wheels for collected packages: pygraphviz
+  Building wheel for pygraphviz (setup.py): started
+  Building wheel for pygraphviz (setup.py): finished with status &#39;error&#39;
+  Running setup.py clean for pygraphviz
+Failed to build pygraphviz
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  error: subprocess-exited-with-error
+  
+  python setup.py bdist_wheel did not run successfully.
+  exit code: 1
+  
+  [65 lines of output]
+  C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\setuptools\_distutils\dist.py:289: UserWarning: Unknown distribution option: &#39;tests_require&#39;
+    warnings.warn(msg)
+  C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\setuptools\dist.py:760: SetuptoolsDeprecationWarning: License classifiers are deprecated.
+  !!
+  
+          ********************************************************************************
+          Please consider removing the following classifiers in favor of a SPDX license expression:
+  
+          License :: OSI Approved :: BSD License
+  
+          See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+          ********************************************************************************
+  
+  !!
+    self._finalize_license_expression()
+  running bdist_wheel
+  running build
+  running build_py
+  creating build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\agraph.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\graphviz.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\scraper.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\testing.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\__init__.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  creating build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_attribute_defaults.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_clear.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_close.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_drawing.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_edge_attributes.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_graph.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_html.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_layout.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_node_attributes.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_readwrite.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_repr_mimebundle.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_scraper.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_string.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_subgraph.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\test_unicode.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  copying pygraphviz\tests\__init__.py -&gt; build\lib.win-amd64-cpython-39\pygraphviz\tests
+  running egg_info
+  writing pygraphviz.egg-info\PKG-INFO
+  writing dependency_links to pygraphviz.egg-info\dependency_links.txt
+  writing top-level names to pygraphviz.egg-info\top_level.txt
+  reading manifest file &#39;pygraphviz.egg-info\SOURCES.txt&#39;
+  reading manifest template &#39;MANIFEST.in&#39;
+  warning: no files found matching &#39;*.png&#39; under directory &#39;doc&#39;
+  warning: no files found matching &#39;*.txt&#39; under directory &#39;doc&#39;
+  warning: no files found matching &#39;*.css&#39; under directory &#39;doc&#39;
+  warning: no previously-included files matching &#39;*~&#39; found anywhere in distribution
+  warning: no previously-included files matching &#39;*.pyc&#39; found anywhere in distribution
+  warning: no previously-included files matching &#39;.svn&#39; found anywhere in distribution
+  no previously-included directories found matching &#39;doc\build&#39;
+  adding license file &#39;LICENSE&#39;
+  writing manifest file &#39;pygraphviz.egg-info\SOURCES.txt&#39;
+  copying pygraphviz\graphviz.i -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  copying pygraphviz\graphviz_wrap.c -&gt; build\lib.win-amd64-cpython-39\pygraphviz
+  running build_ext
+  building &#39;pygraphviz._graphviz&#39; extension
+  creating build\temp.win-amd64-cpython-39\Release\pygraphviz
+  &quot;C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.43.34808\bin\HostX86\x64\cl.exe&quot; /c /nologo /O2 /W3 /GL /DNDEBUG /MD -DSWIG_PYTHON_STRICT_BYTE_CHAR -DGVDLL -IC:\Users\jthow\miniconda3\envs\ml_venv\include -IC:\Users\jthow\miniconda3\envs\ml_venv\Include &quot;-IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.43.34808\include&quot; &quot;-IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\VS\include&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\um&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\shared&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\winrt&quot; &quot;-IC:\Program Files (x86)\Windows Kits\10\\include\10.0.26100.0\\cppwinrt&quot; /Tcpygraphviz/graphviz_wrap.c /Fobuild\temp.win-amd64-cpython-39\Release\pygraphviz\graphviz_wrap.obj
+  graphviz_wrap.c
+  pygraphviz/graphviz_wrap.c(3020): fatal error C1083: No se puede abrir el archivo incluir: &#39;graphviz/cgraph.h&#39;: No such file or directory
+  error: command &#39;C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX86\\x64\\cl.exe&#39; failed with exit code 2
+  [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+  ERROR: Failed building wheel for pygraphviz
+ERROR: Failed to build installable wheels for some pyproject.toml based projects (pygraphviz)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -710,12 +802,205 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/40ca059bc5efd4afba639973cde61168dc6a86072bd8f63a7e2372528e107979.svg" src="_images/40ca059bc5efd4afba639973cde61168dc6a86072bd8f63a7e2372528e107979.svg" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\backend\execute.py:79,</span> in <span class="ni">run_check</span><span class="nt">(cmd, input_lines, encoding, quiet, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;stdout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;stderr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span>
+<span class="ne">---&gt; </span><span class="mi">79</span>     <span class="n">proc</span> <span class="o">=</span> <span class="n">_run_input_lines</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">input_lines</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\backend\execute.py:99,</span> in <span class="ni">_run_input_lines</span><span class="nt">(cmd, input_lines, kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_input_lines</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">input_lines</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">99</span>     <span class="n">popen</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="n">stdin_write</span> <span class="o">=</span> <span class="n">popen</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\subprocess.py:951,</span> in <span class="ni">Popen.__init__</span><span class="nt">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, user, group, extra_groups, encoding, errors, text, umask)</span>
+<span class="g g-Whitespace">    </span><span class="mi">948</span>             <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">949</span>                     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">951</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_execute_child</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">executable</span><span class="p">,</span> <span class="n">preexec_fn</span><span class="p">,</span> <span class="n">close_fds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">952</span>                         <span class="n">pass_fds</span><span class="p">,</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">953</span>                         <span class="n">startupinfo</span><span class="p">,</span> <span class="n">creationflags</span><span class="p">,</span> <span class="n">shell</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">954</span>                         <span class="n">p2cread</span><span class="p">,</span> <span class="n">p2cwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">955</span>                         <span class="n">c2pread</span><span class="p">,</span> <span class="n">c2pwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span>                         <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span>                         <span class="n">restore_signals</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">958</span>                         <span class="n">gid</span><span class="p">,</span> <span class="n">gids</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">umask</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>                         <span class="n">start_new_session</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span> <span class="k">except</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span>     <span class="c1"># Cleanup if the child failed starting.</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\subprocess.py:1436,</span> in <span class="ni">Popen._execute_child</span><span class="nt">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, unused_restore_signals, unused_gid, unused_gids, unused_uid, unused_umask, unused_start_new_session)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1436</span>     <span class="n">hp</span><span class="p">,</span> <span class="n">ht</span><span class="p">,</span> <span class="n">pid</span><span class="p">,</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">_winapi</span><span class="o">.</span><span class="n">CreateProcess</span><span class="p">(</span><span class="n">executable</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1437</span>                              <span class="c1"># no special security</span>
+<span class="g g-Whitespace">   </span><span class="mi">1438</span>                              <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1439</span>                              <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">close_fds</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1440</span>                              <span class="n">creationflags</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1441</span>                              <span class="n">env</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1442</span>                              <span class="n">cwd</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1443</span>                              <span class="n">startupinfo</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1444</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="c1"># Child is launched. Close the parent&#39;s copy of those pipe</span>
+<span class="g g-Whitespace">   </span><span class="mi">1446</span>     <span class="c1"># handles that only the child should have open.  You need</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1449</span>     <span class="c1"># pipe will not close when the child process exits and the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1450</span>     <span class="c1"># ReadFile will hang.</span>
+
+<span class="ne">FileNotFoundError</span>: [WinError 2] El sistema no puede encontrar el archivo especificado
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">ExecutableNotFound</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\IPython\core\formatters.py:974,</span> in <span class="ni">MimeBundleFormatter.__call__</span><span class="nt">(self, obj, include, exclude)</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">974</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\jupyter_integration.py:98,</span> in <span class="ni">JupyterIntegration._repr_mimebundle_</span><span class="nt">(self, include, exclude, **_)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">include</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">include</span><span class="p">)</span> <span class="k">if</span> <span class="n">include</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_jupyter_mimetype</span><span class="p">}</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="n">include</span> <span class="o">-=</span> <span class="nb">set</span><span class="p">(</span><span class="n">exclude</span> <span class="ow">or</span> <span class="p">[])</span>
+<span class="ne">---&gt; </span><span class="mi">98</span> <span class="k">return</span> <span class="p">{</span><span class="n">mimetype</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">)()</span>
+<span class="nn">     99         for mimetype, method_name</span> in <span class="ni">MIME_TYPES.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>         <span class="k">if</span> <span class="n">mimetype</span> <span class="ow">in</span> <span class="n">include</span><span class="p">}</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\jupyter_integration.py:98,</span> in <span class="ni">&lt;dictcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">include</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">include</span><span class="p">)</span> <span class="k">if</span> <span class="n">include</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_jupyter_mimetype</span><span class="p">}</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="n">include</span> <span class="o">-=</span> <span class="nb">set</span><span class="p">(</span><span class="n">exclude</span> <span class="ow">or</span> <span class="p">[])</span>
+<span class="ne">---&gt; </span><span class="mi">98</span> <span class="k">return</span> <span class="p">{</span><span class="n">mimetype</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_name</span><span class="p">)()</span>
+<span class="nn">     99         for mimetype, method_name</span> in <span class="ni">MIME_TYPES.items</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>         <span class="k">if</span> <span class="n">mimetype</span> <span class="ow">in</span> <span class="n">include</span><span class="p">}</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\jupyter_integration.py:112,</span> in <span class="ni">JupyterIntegration._repr_image_svg_xml</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">def</span><span class="w"> </span><span class="nf">_repr_image_svg_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return the rendered graph as SVG string.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">112</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">SVG_ENCODING</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\piping.py:104,</span> in <span class="ni">Pipe.pipe</span><span class="nt">(self, format, renderer, formatter, neato_no_op, quiet, engine, encoding)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="k">def</span><span class="w"> </span><span class="nf">pipe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span>          <span class="nb">format</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>          <span class="n">renderer</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>          <span class="n">engine</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>          <span class="n">encoding</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Return the source piped through the Graphviz layout command.</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     Args:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="sd">         &#39;&lt;?xml version=&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_legacy</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>                              <span class="n">renderer</span><span class="o">=</span><span class="n">renderer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>                              <span class="n">formatter</span><span class="o">=</span><span class="n">formatter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                              <span class="n">neato_no_op</span><span class="o">=</span><span class="n">neato_no_op</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>                              <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>                              <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>                              <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\_tools.py:171,</span> in <span class="ni">deprecate_positional_args.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="n">wanted</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s1">&#39;</span>
+<span class="nn">    163                        for name, value</span> in <span class="ni">deprecated.items</span><span class="nt">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The signature of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> will be reduced&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span>                   <span class="sa">f</span><span class="s1">&#39; to </span><span class="si">{</span><span class="n">supported_number</span><span class="si">}</span><span class="s1"> positional args&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>                   <span class="sa">f</span><span class="s1">&#39; </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">supported</span><span class="p">)</span><span class="si">}</span><span class="s1">: pass </span><span class="si">{</span><span class="n">wanted</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>                   <span class="s1">&#39; as keyword arg(s)&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>                   <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span>                   <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">171</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\piping.py:121,</span> in <span class="ni">Pipe._pipe_legacy</span><span class="nt">(self, format, renderer, formatter, neato_no_op, quiet, engine, encoding)</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="nd">@_tools</span><span class="o">.</span><span class="n">deprecate_positional_args</span><span class="p">(</span><span class="n">supported_number</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="k">def</span><span class="w"> </span><span class="nf">_pipe_legacy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>                  <span class="nb">format</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>                  <span class="n">engine</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>                  <span class="n">encoding</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="ne">--&gt; </span><span class="mi">121</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_future</span><span class="p">(</span><span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>                              <span class="n">renderer</span><span class="o">=</span><span class="n">renderer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>                              <span class="n">formatter</span><span class="o">=</span><span class="n">formatter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>                              <span class="n">neato_no_op</span><span class="o">=</span><span class="n">neato_no_op</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>                              <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>                              <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>                              <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\piping.py:149,</span> in <span class="ni">Pipe._pipe_future</span><span class="nt">(self, format, renderer, formatter, neato_no_op, quiet, engine, encoding)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="k">if</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span> <span class="ow">is</span> <span class="n">codecs</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="c1"># common case: both stdin and stdout need the same encoding</span>
+<span class="ne">--&gt; </span><span class="mi">149</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_lines_string</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">150</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">151</span>         <span class="n">raw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipe_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">input_encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\backend\piping.py:212,</span> in <span class="ni">pipe_lines_string</span><span class="nt">(engine, format, input_lines, encoding, renderer, formatter, neato_no_op, quiet)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">dot_command</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>                           <span class="n">renderer</span><span class="o">=</span><span class="n">renderer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>                           <span class="n">formatter</span><span class="o">=</span><span class="n">formatter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>                           <span class="n">neato_no_op</span><span class="o">=</span><span class="n">neato_no_op</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;input_lines&#39;</span><span class="p">:</span> <span class="n">input_lines</span><span class="p">,</span> <span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="n">encoding</span><span class="p">}</span>
+<span class="ne">--&gt; </span><span class="mi">212</span> <span class="n">proc</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">run_check</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">return</span> <span class="n">proc</span><span class="o">.</span><span class="n">stdout</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\graphviz\backend\execute.py:84,</span> in <span class="ni">run_check</span><span class="nt">(cmd, input_lines, encoding, quiet, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">errno</span> <span class="o">==</span> <span class="n">errno</span><span class="o">.</span><span class="n">ENOENT</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span>         <span class="k">raise</span> <span class="n">ExecutableNotFound</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>     <span class="k">raise</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">quiet</span> <span class="ow">and</span> <span class="n">proc</span><span class="o">.</span><span class="n">stderr</span><span class="p">:</span>
+
+<span class="ne">ExecutableNotFound</span>: failed to execute WindowsPath(&#39;dot&#39;), make sure the Graphviz executables are on your systems&#39; PATH
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;graphviz.sources.Source at 0x1ebb4bfc370&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">lime</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting lime
+  Downloading lime-0.2.0.1.tar.gz (275 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status &#39;done&#39;
+Requirement already satisfied: matplotlib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (3.8.0)
+Requirement already satisfied: numpy in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (1.26.0)
+Requirement already satisfied: scipy in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (1.10.1)
+Requirement already satisfied: tqdm in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (4.66.1)
+Requirement already satisfied: scikit-learn&gt;=0.18 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (1.6.1)
+Requirement already satisfied: scikit-image&gt;=0.12 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from lime) (0.21.0)
+Requirement already satisfied: networkx&gt;=2.8 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (3.2)
+Requirement already satisfied: pillow&gt;=9.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (10.0.1)
+Requirement already satisfied: imageio&gt;=2.27 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (2.31.6)
+Requirement already satisfied: tifffile&gt;=2022.8.12 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (2023.9.26)
+Requirement already satisfied: PyWavelets&gt;=1.1.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (1.5.0)
+Requirement already satisfied: packaging&gt;=21 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (23.2)
+Requirement already satisfied: lazy_loader&gt;=0.2 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-image&gt;=0.12-&gt;lime) (0.3)
+Requirement already satisfied: joblib&gt;=1.2.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn&gt;=0.18-&gt;lime) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn&gt;=0.18-&gt;lime) (3.2.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (1.2.0)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (4.43.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (1.4.5)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (2.8.2)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;lime) (6.1.1)
+Requirement already satisfied: colorama in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from tqdm-&gt;lime) (0.4.6)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;lime) (3.17.0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;lime) (1.16.0)
+Building wheels for collected packages: lime
+  Building wheel for lime (setup.py): started
+  Building wheel for lime (setup.py): finished with status &#39;done&#39;
+  Created wheel for lime: filename=lime-0.2.0.1-py3-none-any.whl size=283918 sha256=86c54b568355d93d1c94d5a4a1da46c0c5be0040e1f446e377affbb3331289a3
+  Stored in directory: c:\users\jthow\appdata\local\pip\cache\wheels\ed\d7\c9\5a0130d06d6310bc6cbe55220e6e72dcb8c4eff9a478717066
+Successfully built lime
+Installing collected packages: lime
+Successfully installed lime-0.2.0.1
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -777,7 +1062,7 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/023e060a03ed6677ec41c4f224c54f77d7f575b0503f1c7086d1a3640eca8d80.png" src="_images/023e060a03ed6677ec41c4f224c54f77d7f575b0503f1c7086d1a3640eca8d80.png" />
+<img alt="_images/884dd5cc842a20d4f437347da6ea80983861841fe9b2b0664a6b4c89980ead17.png" src="_images/884dd5cc842a20d4f437347da6ea80983861841fe9b2b0664a6b4c89980ead17.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -805,7 +1090,7 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec630bf65c8e7a140ee110af2650a10d420e1ee99f8c68bc94da8970cf8081e8.png" src="_images/ec630bf65c8e7a140ee110af2650a10d420e1ee99f8c68bc94da8970cf8081e8.png" />
+<img alt="_images/3dbeab5b3079ac58a5984f8648d0203d9eae487b30d21087a30a784d92ea5dd7.png" src="_images/3dbeab5b3079ac58a5984f8648d0203d9eae487b30d21087a30a784d92ea5dd7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -814,14 +1099,30 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">ram_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/lihkir/Data/main/ram_price.csv&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">ram_prices</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">ram_prices</span><span class="o">.</span><span class="n">price</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Price in $/Mbyte&quot;</span><span class="p">);</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mglearn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (0.2.0)
+Requirement already satisfied: numpy in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.26.0)
+Requirement already satisfied: matplotlib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (3.8.0)
+Requirement already satisfied: scikit-learn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.6.1)
+Requirement already satisfied: pandas in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.1.1)
+Requirement already satisfied: pillow in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (10.0.1)
+Requirement already satisfied: cycler in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (0.12.1)
+Requirement already satisfied: imageio in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.31.6)
+Requirement already satisfied: joblib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.2.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (4.43.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.4.5)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (23.2)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (2.8.2)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (6.1.1)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: tzdata&gt;=2022.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: scipy&gt;=1.6.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (1.10.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (3.2.0)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;mglearn) (3.17.0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;mglearn) (1.16.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -874,10 +1175,73 @@ La fuga de datos ocurre cuando el modelo tiene acceso a información en el conju
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Columnas disponibles: [&#39;om&#39;, &#39;yr&#39;, &#39;mo&#39;, &#39;dy&#39;, &#39;date&#39;, &#39;time&#39;, &#39;tz&#39;, &#39;datetime_utc&#39;, &#39;st&#39;, &#39;stf&#39;, &#39;mag&#39;, &#39;inj&#39;, &#39;fat&#39;, &#39;loss&#39;, &#39;slat&#39;, &#39;slon&#39;, &#39;elat&#39;, &#39;elon&#39;, &#39;len&#39;, &#39;wid&#39;, &#39;ns&#39;, &#39;sn&#39;, &#39;f1&#39;, &#39;f2&#39;, &#39;f3&#39;, &#39;f4&#39;, &#39;fc&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># 1. Cargar los datos</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;</span>  
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># 2. Verificar las columnas disponibles</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Columnas disponibles:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\parsers\readers.py:1705,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1703</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1704</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1705</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1706</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1707</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1709</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1710</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1712</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1714</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1715</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1716</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\pandas\io\common.py:863,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">863</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;C:/Users/wmanj/OneDrive/Escritorio/MACHINELEARNING/tornados.csv&#39;
 </pre></div>
 </div>
-<img alt="_images/7947881884f496d86eea9de0c20bf5e095608d87a14105bc39bd550126c53fc0.png" src="_images/7947881884f496d86eea9de0c20bf5e095608d87a14105bc39bd550126c53fc0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1042,7 +1406,7 @@ Prueba: 0.07 por tornado
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="random-forest">
-<h1>RANDOM FOREST<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1259,6 +1623,304 @@ Clases en y_train: [0 1]
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="xgboost-metodo-de-boosting">
 <h1>XGBoost_Método de Boosting<a class="headerlink" href="#xgboost-metodo-de-boosting" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">xgboost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Asumiendo que ya tienes X y y preparados como en tu código anterior</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Crear el modelo XGBoost</span>
+<span class="n">xgboost_model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo con los datos de entrenamiento</span>
+<span class="n">xgboost_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluar la precisión en el conjunto de entrenamiento y prueba</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on training set: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xgboost_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on test set: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xgboost_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on training set: 1.000
+Accuracy on test set: 1.000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Dividir los datos en conjunto de entrenamiento y prueba (asegurando que X y y ya están definidos)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Parámetros a comparar</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;colsample_bytree&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Lista para almacenar resultados</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Probar cada conjunto de parámetros</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+    <span class="n">xgboost_model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">param</span><span class="p">)</span>
+    <span class="n">xgboost_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">xgboost_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">param</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">))</span>
+
+<span class="c1"># Mostrar los resultados</span>
+<span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">accuracy</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameters: </span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2"> -&gt; Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameters: {&#39;learning_rate&#39;: 0.1, &#39;n_estimators&#39;: 100, &#39;random_state&#39;: 0} -&gt; Accuracy: 1.0000
+Parameters: {&#39;learning_rate&#39;: 0.05, &#39;n_estimators&#39;: 100, &#39;random_state&#39;: 0} -&gt; Accuracy: 1.0000
+Parameters: {&#39;max_depth&#39;: 5, &#39;n_estimators&#39;: 100, &#39;random_state&#39;: 0} -&gt; Accuracy: 1.0000
+Parameters: {&#39;subsample&#39;: 0.8, &#39;n_estimators&#39;: 100, &#39;random_state&#39;: 0} -&gt; Accuracy: 1.0000
+Parameters: {&#39;colsample_bytree&#39;: 0.8, &#39;n_estimators&#39;: 100, &#39;random_state&#39;: 0} -&gt; Accuracy: 1.0000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">xgboost</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                           <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
+                           <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Número de divisiones en validación cruzada</span>
+                           <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir el modelo XGBoost sin GridSearchCV</span>
+<span class="n">xgboost_model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Ajustar el modelo con los datos de entrenamiento</span>
+<span class="n">xgboost_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluar la precisión en el conjunto de entrenamiento y prueba</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on training set: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xgboost_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on test set: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xgboost_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on training set: 1.000
+Accuracy on test set: 1.000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_importance</span>
+
+<span class="c1"># Visualizar la importancia de las características</span>
+<span class="n">plot_importance</span><span class="p">(</span><span class="n">xgboost_model</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/19409dc49b42a5b268bb558f493bf1ffa59c0f03e8c8076822e1e1af6af932c9.png" src="_images/19409dc49b42a5b268bb558f493bf1ffa59c0f03e8c8076822e1e1af6af932c9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicciones en el conjunto de test</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">xgboost_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calcular la precisión (accuracy)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy on test set: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy on test set: 1.000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">100</span>
+<span class="p">}</span>
+
+<span class="c1"># Realizar validación cruzada</span>
+<span class="n">cv_results</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">cv</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">dtrain</span><span class="o">=</span><span class="n">xgb</span><span class="o">.</span><span class="n">DMatrix</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">),</span>
+                    <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">nfold</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose_eval</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Ver resultados de la validación cruzada</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cv_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0]	train-logloss:0.16752+0.00041	test-logloss:0.16752+0.00057
+[1]	train-logloss:0.15576+0.00037	test-logloss:0.15576+0.00048
+[2]	train-logloss:0.14560+0.00033	test-logloss:0.14560+0.00042
+[3]	train-logloss:0.13655+0.00030	test-logloss:0.13656+0.00037
+[4]	train-logloss:0.12836+0.00027	test-logloss:0.12836+0.00033
+[5]	train-logloss:0.12086+0.00025	test-logloss:0.12086+0.00030
+[6]	train-logloss:0.11395+0.00023	test-logloss:0.11395+0.00027
+[7]	train-logloss:0.10754+0.00022	test-logloss:0.10754+0.00024
+[8]	train-logloss:0.10158+0.00020	test-logloss:0.10158+0.00022
+[9]	train-logloss:0.09601+0.00019	test-logloss:0.09601+0.00020
+[10]	train-logloss:0.09081+0.00017	test-logloss:0.09081+0.00019
+[11]	train-logloss:0.08593+0.00016	test-logloss:0.08593+0.00017
+[12]	train-logloss:0.08134+0.00015	test-logloss:0.08135+0.00016
+[13]	train-logloss:0.07704+0.00014	test-logloss:0.07704+0.00015
+[14]	train-logloss:0.07298+0.00013	test-logloss:0.07298+0.00014
+[15]	train-logloss:0.06916+0.00013	test-logloss:0.06916+0.00013
+[16]	train-logloss:0.06556+0.00012	test-logloss:0.06556+0.00012
+[17]	train-logloss:0.06216+0.00011	test-logloss:0.06216+0.00011
+[18]	train-logloss:0.05895+0.00010	test-logloss:0.05895+0.00010
+[19]	train-logloss:0.05592+0.00010	test-logloss:0.05592+0.00010
+[20]	train-logloss:0.05305+0.00009	test-logloss:0.05305+0.00009
+[21]	train-logloss:0.05034+0.00009	test-logloss:0.05034+0.00009
+[22]	train-logloss:0.04778+0.00008	test-logloss:0.04778+0.00008
+[23]	train-logloss:0.04535+0.00008	test-logloss:0.04535+0.00008
+[24]	train-logloss:0.04305+0.00007	test-logloss:0.04305+0.00007
+[25]	train-logloss:0.04088+0.00007	test-logloss:0.04088+0.00007
+[26]	train-logloss:0.03882+0.00007	test-logloss:0.03882+0.00006
+[27]	train-logloss:0.03686+0.00006	test-logloss:0.03686+0.00006
+[28]	train-logloss:0.03501+0.00006	test-logloss:0.03501+0.00006
+[29]	train-logloss:0.03326+0.00006	test-logloss:0.03326+0.00005
+[30]	train-logloss:0.03159+0.00005	test-logloss:0.03159+0.00005
+[31]	train-logloss:0.03001+0.00005	test-logloss:0.03001+0.00005
+[32]	train-logloss:0.02852+0.00005	test-logloss:0.02852+0.00004
+[33]	train-logloss:0.02710+0.00005	test-logloss:0.02710+0.00004
+[34]	train-logloss:0.02575+0.00004	test-logloss:0.02575+0.00004
+[35]	train-logloss:0.02447+0.00004	test-logloss:0.02447+0.00004
+[36]	train-logloss:0.02325+0.00004	test-logloss:0.02325+0.00004
+[37]	train-logloss:0.02210+0.00004	test-logloss:0.02210+0.00003
+[38]	train-logloss:0.02101+0.00003	test-logloss:0.02101+0.00003
+[39]	train-logloss:0.01997+0.00003	test-logloss:0.01997+0.00003
+[40]	train-logloss:0.01898+0.00003	test-logloss:0.01898+0.00003
+[41]	train-logloss:0.01804+0.00003	test-logloss:0.01804+0.00003
+[42]	train-logloss:0.01715+0.00003	test-logloss:0.01715+0.00003
+[43]	train-logloss:0.01631+0.00003	test-logloss:0.01631+0.00002
+[44]	train-logloss:0.01551+0.00003	test-logloss:0.01551+0.00002
+[45]	train-logloss:0.01474+0.00002	test-logloss:0.01474+0.00002
+[46]	train-logloss:0.01402+0.00002	test-logloss:0.01402+0.00002
+[47]	train-logloss:0.01333+0.00002	test-logloss:0.01333+0.00002
+[48]	train-logloss:0.01268+0.00002	test-logloss:0.01268+0.00002
+[49]	train-logloss:0.01206+0.00002	test-logloss:0.01206+0.00002
+[50]	train-logloss:0.01146+0.00002	test-logloss:0.01146+0.00002
+[51]	train-logloss:0.01090+0.00002	test-logloss:0.01090+0.00002
+[52]	train-logloss:0.01037+0.00002	test-logloss:0.01037+0.00002
+[53]	train-logloss:0.00986+0.00002	test-logloss:0.00986+0.00001
+[54]	train-logloss:0.00938+0.00002	test-logloss:0.00938+0.00001
+[55]	train-logloss:0.00892+0.00001	test-logloss:0.00892+0.00001
+[56]	train-logloss:0.00849+0.00001	test-logloss:0.00849+0.00001
+[57]	train-logloss:0.00807+0.00001	test-logloss:0.00807+0.00001
+[58]	train-logloss:0.00768+0.00001	test-logloss:0.00768+0.00001
+[59]	train-logloss:0.00731+0.00001	test-logloss:0.00731+0.00001
+[60]	train-logloss:0.00695+0.00001	test-logloss:0.00695+0.00001
+[61]	train-logloss:0.00661+0.00001	test-logloss:0.00661+0.00001
+[62]	train-logloss:0.00629+0.00001	test-logloss:0.00629+0.00001
+[63]	train-logloss:0.00599+0.00001	test-logloss:0.00599+0.00001
+[64]	train-logloss:0.00570+0.00001	test-logloss:0.00570+0.00001
+[65]	train-logloss:0.00542+0.00001	test-logloss:0.00542+0.00001
+[66]	train-logloss:0.00516+0.00001	test-logloss:0.00516+0.00001
+[67]	train-logloss:0.00491+0.00001	test-logloss:0.00491+0.00001
+[68]	train-logloss:0.00467+0.00001	test-logloss:0.00467+0.00001
+[69]	train-logloss:0.00444+0.00001	test-logloss:0.00444+0.00001
+[70]	train-logloss:0.00423+0.00001	test-logloss:0.00423+0.00001
+[71]	train-logloss:0.00402+0.00001	test-logloss:0.00402+0.00001
+[72]	train-logloss:0.00383+0.00001	test-logloss:0.00383+0.00001
+[73]	train-logloss:0.00365+0.00001	test-logloss:0.00365+0.00001
+[74]	train-logloss:0.00347+0.00001	test-logloss:0.00347+0.00001
+[75]	train-logloss:0.00330+0.00001	test-logloss:0.00330+0.00001
+[76]	train-logloss:0.00314+0.00000	test-logloss:0.00314+0.00001
+[77]	train-logloss:0.00299+0.00000	test-logloss:0.00299+0.00000
+[78]	train-logloss:0.00285+0.00000	test-logloss:0.00285+0.00000
+[79]	train-logloss:0.00271+0.00000	test-logloss:0.00271+0.00000
+[80]	train-logloss:0.00258+0.00000	test-logloss:0.00258+0.00000
+[81]	train-logloss:0.00246+0.00000	test-logloss:0.00246+0.00000
+[82]	train-logloss:0.00234+0.00000	test-logloss:0.00234+0.00000
+[83]	train-logloss:0.00223+0.00000	test-logloss:0.00223+0.00000
+[84]	train-logloss:0.00212+0.00000	test-logloss:0.00212+0.00000
+[85]	train-logloss:0.00202+0.00000	test-logloss:0.00202+0.00000
+[86]	train-logloss:0.00193+0.00000	test-logloss:0.00193+0.00000
+[87]	train-logloss:0.00184+0.00000	test-logloss:0.00184+0.00000
+[88]	train-logloss:0.00175+0.00000	test-logloss:0.00175+0.00000
+[89]	train-logloss:0.00167+0.00000	test-logloss:0.00167+0.00000
+[90]	train-logloss:0.00159+0.00000	test-logloss:0.00159+0.00000
+[91]	train-logloss:0.00151+0.00000	test-logloss:0.00151+0.00000
+[92]	train-logloss:0.00144+0.00000	test-logloss:0.00144+0.00000
+[93]	train-logloss:0.00137+0.00000	test-logloss:0.00137+0.00000
+[94]	train-logloss:0.00131+0.00000	test-logloss:0.00131+0.00000
+[95]	train-logloss:0.00125+0.00000	test-logloss:0.00125+0.00000
+[96]	train-logloss:0.00119+0.00000	test-logloss:0.00119+0.00000
+[97]	train-logloss:0.00113+0.00000	test-logloss:0.00113+0.00000
+[98]	train-logloss:0.00108+0.00000	test-logloss:0.00108+0.00000
+[99]	train-logloss:0.00103+0.00000	test-logloss:0.00103+0.00000
+    train-logloss-mean  train-logloss-std  test-logloss-mean  test-logloss-std
+0             0.167517           0.000413           0.167517          0.000566
+1             0.155762           0.000366           0.155762          0.000480
+2             0.145602           0.000329           0.145602          0.000417
+3             0.136555           0.000299           0.136555          0.000368
+4             0.128362           0.000274           0.128363          0.000328
+..                 ...                ...                ...               ...
+95            0.001247           0.000002           0.001247          0.000002
+96            0.001189           0.000002           0.001189          0.000002
+97            0.001134           0.000002           0.001134          0.000002
+98            0.001081           0.000002           0.001081          0.000002
+99            0.001031           0.000002           0.001031          0.000002
+
+[100 rows x 4 columns]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gradiente-boosting-classifier">
+<h1>Gradiente Boosting Classifier<a class="headerlink" href="#gradiente-boosting-classifier" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
@@ -1578,8 +2240,9 @@ Probabilidades por clase: [1. 0.]
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos Árbol de Desición</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-los-arboles-de-decision">Análisis de los árboles de decisión</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">RANDOM FOREST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#xgboost-metodo-de-boosting">XGBoost_Método de Boosting</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradiente-boosting-classifier">Gradiente Boosting Classifier</a></li>
 </ul>
 
   </nav></div>
