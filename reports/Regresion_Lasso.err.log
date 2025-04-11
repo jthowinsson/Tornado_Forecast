@@ -1,0 +1,163 @@
+Traceback (most recent call last):
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\jthow\miniconda3\envs\ml_venv\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import pandas as pd
+from sklearn.metrics import mean_absolute_percentage_error, mean_squared_error, r2_score
+from statsmodels.stats.diagnostic import acorr_ljungbox
+from scipy.stats import jarque_bera
+
+# Ensure grid_lasso and grid_ridge are loaded
+if 'grid_lasso' not in globals() or 'grid_ridge' not in globals():
+    from joblib import load
+    grid_lasso = load('grid_lasso.joblib')
+    grid_ridge = load('grid_ridge.joblib')
+
+# Haciendo predicciones con el mejor modelo de Lasso
+y_pred_lasso = grid_lasso.best_estimator_.predict(X_test)
+
+# Haciendo predicciones con el mejor modelo de Ridge
+y_pred_ridge = grid_ridge.best_estimator_.predict(X_test)
+
+# Calculando las métricas para Lasso
+mape_lasso = mean_absolute_percentage_error(y_test, y_pred_lasso)
+rmse_lasso = np.sqrt(mean_squared_error(y_test, y_pred_lasso))
+r2_lasso = r2_score(y_test, y_pred_lasso)
+
+# Calculando Ljung-Box p-value para Lasso
+lb_test_lasso = acorr_ljungbox(y_test - y_pred_lasso, lags=[10])
+lb_p_value_lasso = lb_test_lasso['lb_pvalue'].iloc[0]  # Accede al valor p del primer lag (lag 10)
+
+# Calculando Jarque-Bera p-value para Lasso
+jb_p_value_lasso = jarque_bera(y_test - y_pred_lasso)[1]
+
+# Calculando las métricas para Ridge
+mape_ridge = mean_absolute_percentage_error(y_test, y_pred_ridge)
+rmse_ridge = np.sqrt(mean_squared_error(y_test, y_pred_ridge))
+r2_ridge = r2_score(y_test, y_pred_ridge)
+
+# Calculando Ljung-Box p-value para Ridge
+lb_test_ridge = acorr_ljungbox(y_test - y_pred_ridge, lags=[10])
+lb_p_value_ridge = lb_test_ridge['lb_pvalue'].iloc[0]  # Accede al valor p del primer lag (lag 10)
+
+# Calculando Jarque-Bera p-value para Ridge
+jb_p_value_ridge = jarque_bera(y_test - y_pred_ridge)[1]
+
+# Resultados para Lasso
+metrics_lasso = {
+    "MAPE": mape_lasso,
+    "RMSE": rmse_lasso,
+    "R Cuadrado": r2_lasso,
+    "Ljung-Box p-value": lb_p_value_lasso,
+    "Jarque-Bera p-value": jb_p_value_lasso
+}
+
+# Resultados para Ridge
+metrics_ridge = {
+    "MAPE": mape_ridge,
+    "RMSE": rmse_ridge,
+    "R Cuadrado": r2_ridge,
+    "Ljung-Box p-value": lb_p_value_ridge,
+    "Jarque-Bera p-value": jb_p_value_ridge
+}
+
+# Crear un DataFrame combinado para las métricas de Lasso y Ridge
+metrics_combined_df = pd.DataFrame({
+    "Lasso": metrics_lasso,
+    "Ridge": metrics_ridge
+}).T
+
+# Redondear los valores a dos decimales
+metrics_combined_df = metrics_combined_df.round(2)
+
+# Mostrar la tabla combinada
+print("Métricas combinadas para Lasso y Ridge:")
+print(metrics_combined_df)
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mValueError[0m                                Traceback (most recent call last)
+Cell [1;32mIn[14], line 14[0m
+[0;32m     11[0m     grid_ridge [38;5;241m=[39m load([38;5;124m'[39m[38;5;124mgrid_ridge.joblib[39m[38;5;124m'[39m)
+[0;32m     13[0m [38;5;66;03m# Haciendo predicciones con el mejor modelo de Lasso[39;00m
+[1;32m---> 14[0m y_pred_lasso [38;5;241m=[39m [43mgrid_lasso[49m[38;5;241;43m.[39;49m[43mbest_estimator_[49m[38;5;241;43m.[39;49m[43mpredict[49m[43m([49m[43mX_test[49m[43m)[49m
+[0;32m     16[0m [38;5;66;03m# Haciendo predicciones con el mejor modelo de Ridge[39;00m
+[0;32m     17[0m y_pred_ridge [38;5;241m=[39m grid_ridge[38;5;241m.[39mbest_estimator_[38;5;241m.[39mpredict(X_test)
+
+File [1;32m~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\pipeline.py:787[0m, in [0;36mPipeline.predict[1;34m(self, X, **params)[0m
+[0;32m    785[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m _routing_enabled():
+[0;32m    786[0m     [38;5;28;01mfor[39;00m _, name, transform [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39m_iter(with_final[38;5;241m=[39m[38;5;28;01mFalse[39;00m):
+[1;32m--> 787[0m         Xt [38;5;241m=[39m [43mtransform[49m[38;5;241;43m.[39;49m[43mtransform[49m[43m([49m[43mXt[49m[43m)[49m
+[0;32m    788[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39msteps[[38;5;241m-[39m[38;5;241m1[39m][[38;5;241m1[39m][38;5;241m.[39mpredict(Xt, [38;5;241m*[39m[38;5;241m*[39mparams)
+[0;32m    790[0m [38;5;66;03m# metadata routing enabled[39;00m
+
+File [1;32m~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\_set_output.py:319[0m, in [0;36m_wrap_method_output.<locals>.wrapped[1;34m(self, X, *args, **kwargs)[0m
+[0;32m    317[0m [38;5;129m@wraps[39m(f)
+[0;32m    318[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mwrapped[39m([38;5;28mself[39m, X, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m--> 319[0m     data_to_wrap [38;5;241m=[39m f([38;5;28mself[39m, X, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[0;32m    320[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(data_to_wrap, [38;5;28mtuple[39m):
+[0;32m    321[0m         [38;5;66;03m# only wrap the first output for cross decomposition[39;00m
+[0;32m    322[0m         return_tuple [38;5;241m=[39m (
+[0;32m    323[0m             _wrap_data_with_container(method, data_to_wrap[[38;5;241m0[39m], X, [38;5;28mself[39m),
+[0;32m    324[0m             [38;5;241m*[39mdata_to_wrap[[38;5;241m1[39m:],
+[0;32m    325[0m         )
+
+File [1;32m~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\preprocessing\_data.py:1062[0m, in [0;36mStandardScaler.transform[1;34m(self, X, copy)[0m
+[0;32m   1059[0m check_is_fitted([38;5;28mself[39m)
+[0;32m   1061[0m copy [38;5;241m=[39m copy [38;5;28;01mif[39;00m copy [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28mself[39m[38;5;241m.[39mcopy
+[1;32m-> 1062[0m X [38;5;241m=[39m [43mvalidate_data[49m[43m([49m
+[0;32m   1063[0m [43m    [49m[38;5;28;43mself[39;49m[43m,[49m
+[0;32m   1064[0m [43m    [49m[43mX[49m[43m,[49m
+[0;32m   1065[0m [43m    [49m[43mreset[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[0;32m   1066[0m [43m    [49m[43maccept_sparse[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcsr[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[0;32m   1067[0m [43m    [49m[43mcopy[49m[38;5;241;43m=[39;49m[43mcopy[49m[43m,[49m
+[0;32m   1068[0m [43m    [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mFLOAT_DTYPES[49m[43m,[49m
+[0;32m   1069[0m [43m    [49m[43mforce_writeable[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[0;32m   1070[0m [43m    [49m[43mensure_all_finite[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mallow-nan[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[0;32m   1071[0m [43m[49m[43m)[49m
+[0;32m   1073[0m [38;5;28;01mif[39;00m sparse[38;5;241m.[39missparse(X):
+[0;32m   1074[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mwith_mean:
+
+File [1;32m~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\validation.py:2919[0m, in [0;36mvalidate_data[1;34m(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)[0m
+[0;32m   2835[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mvalidate_data[39m(
+[0;32m   2836[0m     _estimator,
+[0;32m   2837[0m     [38;5;241m/[39m,
+[1;32m   (...)[0m
+[0;32m   2843[0m     [38;5;241m*[39m[38;5;241m*[39mcheck_params,
+[0;32m   2844[0m ):
+[0;32m   2845[0m [38;5;250m    [39m[38;5;124;03m"""Validate input data and set or check feature names and counts of the input.[39;00m
+[0;32m   2846[0m 
+[0;32m   2847[0m [38;5;124;03m    This helper function should be used in an estimator that requires input[39;00m
+[1;32m   (...)[0m
+[0;32m   2917[0m [38;5;124;03m        validated.[39;00m
+[0;32m   2918[0m [38;5;124;03m    """[39;00m
+[1;32m-> 2919[0m     [43m_check_feature_names[49m[43m([49m[43m_estimator[49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43mreset[49m[38;5;241;43m=[39;49m[43mreset[49m[43m)[49m
+[0;32m   2920[0m     tags [38;5;241m=[39m get_tags(_estimator)
+[0;32m   2921[0m     [38;5;28;01mif[39;00m y [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m tags[38;5;241m.[39mtarget_tags[38;5;241m.[39mrequired:
+
+File [1;32m~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\validation.py:2777[0m, in [0;36m_check_feature_names[1;34m(estimator, X, reset)[0m
+[0;32m   2774[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m missing_names [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m unexpected_names:
+[0;32m   2775[0m     message [38;5;241m+[39m[38;5;241m=[39m [38;5;124m"[39m[38;5;124mFeature names must be in the same order as they were in fit.[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m-> 2777[0m [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(message)
+
+[1;31mValueError[0m: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- fat
+
+
