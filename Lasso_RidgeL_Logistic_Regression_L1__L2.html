@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica &#8212; Tornado Forecast</title>
+    <title>Lasso_Ridg_Regresión_Logistica Model &#8212; Tornado Forecast</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Lasso_RidgeL_Logistic_Regression_L1__L2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="Random%20Forest.html" />
+    <link rel="next" title="Random Forest Model" href="Random%20Forest.html" />
     <link rel="prev" title="Modelo Naive Bayes" href="Naive_Bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -181,30 +181,29 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">Importación de los Datos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">Cargue de Datos para el Modelo K-Nearest Neighbors - KNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">K-Nearest Neighbors - KNN Model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Cargue de Datos para el Modelo Regresión Lineal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Cargue de Datos para el Modelo Regresión Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Modelo Regresión Lineal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Lasso Regession Model</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="SVR_%28Support%20Vector%20Regression%29.html">Metricas con Pipeline y Gridsearch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Modelo Naive Bayes</a></li>
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lasso_Ridg_Regresión_Logistica Model</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="Random%20Forest.html">Random Forest Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SVM_%20%28Support%20Vector%20Machine%29.html">Máquinas de soporte vectorial (SVM)</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Cargue de Datos para el Modelo Autoencoders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Autoencoders.html">Autoencoders Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RNN_%28Red%20Neuronal%20Recurrente%29.html">RNN</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="%C3%81rbol%20de%20Decisi%C3%B3n%20%28Decision%20Tree%29.html">Árbol de Desición Model</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="HistGradientBoostingRegressor.html">Hist_Gradient_Boosting_Regressor</a></li>
 
 </ul>
@@ -392,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica</h1>
+    <h1>Lasso_Ridg_Regresión_Logistica Model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,7 +401,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lasso_Ridg_Regresión_Logistica Model</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-logistic-l1-y-l2">Metricas Logistic L1 y L2</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metrica-de-regresiones">Metrica de Regresiones</a></li>
 </ul>
@@ -417,8 +416,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cargue-de-datos-para-el-modelo-lasso-ridg-regresion-logistica">
-<h1>Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica<a class="headerlink" href="#cargue-de-datos-para-el-modelo-lasso-ridg-regresion-logistica" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lasso-ridg-regresion-logistica-model">
+<h1>Lasso_Ridg_Regresión_Logistica Model<a class="headerlink" href="#lasso-ridg-regresion-logistica-model" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
@@ -544,15 +543,15 @@ Puntuación R^2 en el conjunto de prueba: 0.3305327486926829
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión (L1): 0.904505422519834
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precisión (L1): 0.9041414950141932
 Reporte (L1):
                precision    recall  f1-score   support
 
            0       0.92      0.98      0.95     12219
-           1       0.66      0.29      0.40      1520
+           1       0.65      0.29      0.40      1520
 
     accuracy                           0.90     13739
-   macro avg       0.79      0.63      0.67     13739
+   macro avg       0.78      0.63      0.67     13739
 weighted avg       0.89      0.90      0.89     13739
 
 Precisión (L2): 0.8904578208020962
@@ -633,7 +632,7 @@ Mejor puntuación (R²/Accuracy): 0.9026640243084154
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b94af4d86082c6a1fe0030eb4288a3a69b813d8fc6b2c77c49313fa9a69d3e04.png" src="_images/b94af4d86082c6a1fe0030eb4288a3a69b813d8fc6b2c77c49313fa9a69d3e04.png" />
+<img alt="_images/8ea91b42de43e1ef4c3b954b22a0cc959928740289e4d50311c9d517f9129f48.png" src="_images/8ea91b42de43e1ef4c3b954b22a0cc959928740289e4d50311c9d517f9129f48.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -662,7 +661,7 @@ Mejor puntuación (R²/Accuracy): 0.9026640243084154
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7707aec96cd6a98a659f732107c57917ecc1c9effa0f9da67a5800a8dbec3652.png" src="_images/7707aec96cd6a98a659f732107c57917ecc1c9effa0f9da67a5800a8dbec3652.png" />
+<img alt="_images/3ec028395c10bcbec69218e078657df1ffc7110ae0b68caa7bec793a9104c61e.png" src="_images/3ec028395c10bcbec69218e078657df1ffc7110ae0b68caa7bec793a9104c61e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -782,7 +781,7 @@ Mejor puntuación (R²/Accuracy): 0.9026640243084154
 AUC (L2): 0.5186
 </pre></div>
 </div>
-<img alt="_images/411f05280c0f9f6ea59cddc94b9d80b45515b5dde739c1ee1e959cbd1e061db4.png" src="_images/411f05280c0f9f6ea59cddc94b9d80b45515b5dde739c1ee1e959cbd1e061db4.png" />
+<img alt="_images/d3415b637401370372178f486b35b5c25ef1c694820cbd2f0c4c6e75052b71c0.png" src="_images/d3415b637401370372178f486b35b5c25ef1c694820cbd2f0c4c6e75052b71c0.png" />
 </div>
 </div>
 </section>
@@ -1028,7 +1027,7 @@ Ridge                           0.00
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Random Forest Model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1048,7 +1047,7 @@ Ridge                           0.00
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cargue de Datos para el Modelo Lasso_Ridg_Regresión_Logistica</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lasso_Ridg_Regresión_Logistica Model</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-logistic-l1-y-l2">Metricas Logistic L1 y L2</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metrica-de-regresiones">Metrica de Regresiones</a></li>
 </ul>
