@@ -5,13 +5,16 @@ format: jb-book
 root: intro
 chapters:
 - file: Tornados_EDA
-- file: Naive_Bayes
-- file: Autoencoders
-- file: SVM_ (Support Vector Machine)
-- file: RNN_(Red Neuronal Recurrente)
-- file: Regresion_Lasso
 - file: KNN_(k-Nearest Neighbors)
 - file: RIDGE_(Regresión con Penalización L2)
-- file: Árbol de Decisión (Decision Tree)
+- file: Regresion_Lasso
+- file: XGBoost_Método de Boosting
+- file: SVR_(Support Vector Regression)
+- file: Naive_Bayes
 - file: Lasso_RidgeL_Logistic_Regression_L1__L2
-- file: Metricas de Medidas
+- file: Random Forest
+- file: SVM_ (Support Vector Machine)
+- file: Autoencoders
+- file: RNN_(Red Neuronal Recurrente)
+- file: Árbol de Decisión (Decision Tree)
+- file: HistGradientBoostingRegressor
