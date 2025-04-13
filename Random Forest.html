@@ -182,10 +182,8 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tornados_EDA.html">Importación de los Datos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="KNN_%28k-Nearest%20Neighbors%29.html">K-Nearest Neighbors - KNN Model</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="RIDGE_%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Modelo Regresión Lineal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Regresion_Lasso.html">Lasso Regession Model</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="SVR_%28Support%20Vector%20Regression%29.html">Metricas con Pipeline y Gridsearch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Naive_Bayes.html">Modelo Naive Bayes</a></li>
 
@@ -378,7 +376,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -394,6 +394,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-para-el-modelo-random-forest">Metricas Para el Modelo Random Forest</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -1022,21 +1030,42 @@ Clases en y_train: [0 1]
 </div>
 </div>
 </div>
+<section id="metricas-para-el-modelo-random-forest">
+<h2>Metricas Para el Modelo Random Forest<a class="headerlink" href="#metricas-para-el-modelo-random-forest" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------</span>
+<span class="c1"># Paso 1: Importar los paquetes necesarios</span>
+<span class="c1"># ------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_percentage_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">mean_absolute_percentage_error</span><span class="p">,</span> 
+    <span class="n">mean_squared_error</span><span class="p">,</span> 
+    <span class="n">r2_score</span><span class="p">,</span> 
+    <span class="n">precision_score</span><span class="p">,</span> 
+    <span class="n">recall_score</span><span class="p">,</span> 
+    <span class="n">accuracy_score</span><span class="p">,</span> 
+    <span class="n">f1_score</span><span class="p">,</span> 
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.diagnostic</span><span class="w"> </span><span class="kn">import</span> <span class="n">acorr_ljungbox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">jarque_bera</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>  <span class="c1"># Importar time para medir el tiempo de entrenamiento</span>
 
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 2: Cargar los datos</span>
+<span class="c1"># ------------------------</span>
 <span class="c1"># Suponiendo que X_train, X_test, y_train, y_test ya están definidas</span>
 
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 3: Definir el pipeline y el grid de hiperparámetros</span>
+<span class="c1"># ------------------------</span>
 <span class="c1"># Definir el pipeline para el modelo de RandomForestRegressor</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
@@ -1050,101 +1079,96 @@ Clases en y_train: [0 1]
     <span class="s1">&#39;model__min_samples_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="p">}</span>
 
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 4: Entrenar el modelo con GridSearchCV</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Medir el tiempo de entrenamiento</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
 <span class="c1"># Realizar GridSearchCV para el modelo</span>
 <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">)</span>
 <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Calcular el tiempo total de entrenamiento</span>
+<span class="n">training_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+<span class="c1"># Obtener el mejor modelo</span>
 <span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
 
-<span class="c1"># Guardar el modelo</span>
+<span class="c1"># Guardar el modelo entrenado</span>
 <span class="n">dump</span><span class="p">(</span><span class="n">grid_search</span><span class="p">,</span> <span class="s1">&#39;RandomForestRegressor.joblib&#39;</span><span class="p">)</span>
 
-<span class="c1"># Calcular las métricas para el modelo</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 5: Hacer predicciones con el mejor modelo</span>
+<span class="c1"># ------------------------</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">residuals</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span>  <span class="c1"># Calcular residuos</span>
 
-<span class="c1"># Métricas de regresión</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 6: Calcular las métricas de regresión</span>
+<span class="c1"># ------------------------</span>
 <span class="n">mape</span> <span class="o">=</span> <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="n">jb_p_value</span> <span class="o">=</span> <span class="n">jarque_bera</span><span class="p">(</span><span class="n">residuals</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># Convertir el problema de regresión a clasificación</span>
-<span class="c1"># Por ejemplo, usamos la mediana de y_test como umbral</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 7: Realizar el Ljung-Box test para comprobar autocorrelación en los residuos</span>
+<span class="c1"># ------------------------</span>
+<span class="n">ljung_box_test</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ljung_box_stat</span> <span class="o">=</span> <span class="n">ljung_box_test</span><span class="p">[</span><span class="s1">&#39;lb_stat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ljung_box_pvalue</span> <span class="o">=</span> <span class="n">ljung_box_test</span><span class="p">[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Imprimir el resultado del Ljung-Box test</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ljung-Box Test statistic: </span><span class="si">{</span><span class="n">ljung_box_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ljung-Box Test p-value: </span><span class="si">{</span><span class="n">ljung_box_pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 8: Convertir el problema de regresión a clasificación</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Usar la mediana de y_test como umbral</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 <span class="n">y_test_class</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_test</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">y_pred_class</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="c1"># Métricas de clasificación</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 9: Calcular las métricas de clasificación</span>
+<span class="c1"># ------------------------</span>
 <span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test_class</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
 <span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test_class</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_class</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test_class</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
 <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test_class</span><span class="p">,</span> <span class="n">y_pred_class</span><span class="p">)</span>
 
-<span class="c1"># Crear un DataFrame para las métricas</span>
-<span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;Modelo&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;RandomForestRegressor&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;MAPE&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;RMSE&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;R Cuadrado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Jarque-Bera p-value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jb_p_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Precisión&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Recall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;F1-score&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;AUC&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-<span class="p">}</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 10: Crear DataFrame con los resultados</span>
+<span class="c1"># ------------------------</span>
+<span class="n">resultados_rf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RandomForestRegressor optimizado (GridSearchCV)&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MAPE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mape</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;R Cuadrado&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Ljung-Box Test statistic&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ljung_box_stat</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Ljung-Box Test p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ljung_box_pvalue</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Jarque-Bera p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jb_p_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Precision&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Recall&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;F1-Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">training_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>  <span class="c1"># Incluir el tiempo de entrenamiento</span>
+<span class="p">})</span>
 
-<span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
-
-<span class="c1"># Mostrar la tabla combinada</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 11: Mostrar los resultados</span>
+<span class="c1"># ------------------------</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas para el modelo de RandomForestRegressor:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resultados_rf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.diagnostic</span><span class="w"> </span><span class="kn">import</span> <span class="n">acorr_ljungbox</span>
-
-<span class="c1"># Suponiendo que X_train, X_test, y_train, y_test ya están definidas</span>
-
-<span class="c1"># Definir el pipeline para el modelo de RandomForestRegressor</span>
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
-    <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
-<span class="p">])</span>
-
-<span class="c1"># Ajustar el modelo</span>
-<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="c1"># Realizar predicciones</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Calcular los residuos</span>
-<span class="n">residuals</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred</span>
-
-<span class="c1"># Realizar el Ljung-Box test para comprobar autocorrelación en los residuos</span>
-<span class="n">ljung_box_test</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">return_df</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Imprimir el resultado del Ljung-Box test</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ljung-Box Test statistic: </span><span class="si">{</span><span class="n">ljung_box_test</span><span class="p">[</span><span class="s1">&#39;lb_stat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ljung-Box Test p-value: </span><span class="si">{</span><span class="n">ljung_box_test</span><span class="p">[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ljung-Box Test statistic: 19.7666
-Ljung-Box Test p-value: 0.0315
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1201,6 +1225,21 @@ Ljung-Box Test p-value: 0.0315
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metricas-para-el-modelo-random-forest">Metricas Para el Modelo Random Forest</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

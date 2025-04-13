@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import numpy as np', 'import pandas as pd', 'from sklearn.ensemble import RandomForestRegressor', 'from sklearn.model_selection import GridSearchCV', 'from sklearn.pipeline import Pipeline']
+['# ------------------------', '# Paso 1: Importar los paquetes necesarios', '# ------------------------', 'import numpy as np', 'import pandas as pd']
 ...
-['metrics_df = pd.DataFrame(metrics)', '', '# Mostrar la tabla combinada', 'print("Métricas para el modelo de RandomForestRegressor:")', 'print(metrics_df)']
+['# ------------------------', '# Paso 11: Mostrar los resultados', '# ------------------------', 'print("Métricas para el modelo de RandomForestRegressor:")', 'display(resultados_rf)']
 -------------------
 
