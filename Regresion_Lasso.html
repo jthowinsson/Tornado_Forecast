@@ -512,7 +512,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definir X y y (asegúrate de que ya tienes estas variables previamente definidas)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span> <span class="s1">&#39;slat&#39;</span><span class="p">,</span> <span class="s1">&#39;slon&#39;</span><span class="p">,</span> <span class="s1">&#39;elat&#39;</span><span class="p">,</span> <span class="s1">&#39;elon&#39;</span><span class="p">,</span> <span class="s1">&#39;len&#39;</span><span class="p">,</span> <span class="s1">&#39;wid&#39;</span><span class="p">,</span><span class="s1">&#39;fat&#39;</span><span class="p">,</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span><span class="s1">&#39;loss&#39;</span><span class="p">]]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span> <span class="s1">&#39;slat&#39;</span><span class="p">,</span> <span class="s1">&#39;slon&#39;</span><span class="p">,</span> <span class="s1">&#39;elat&#39;</span><span class="p">,</span> <span class="s1">&#39;elon&#39;</span><span class="p">,</span> <span class="s1">&#39;len&#39;</span><span class="p">,</span> <span class="s1">&#39;wid&#39;</span><span class="p">,</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span><span class="s1">&#39;loss&#39;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;inj&#39;</span><span class="p">]</span>
 
 <span class="c1"># Dividir los datos en conjunto de entrenamiento y prueba (80% entrenamiento, 20% prueba)</span>
@@ -548,27 +548,26 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.59
-Test set score: 0.65
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.24
+Test set score: 0.33
 Number of features used: 9
 Coeficientes del modelo Lasso:
-mag     0.000000e+00
+mag     3.947769e-01
 slat   -0.000000e+00
-slon    7.539867e-03
+slon    8.440884e-03
 elat   -0.000000e+00
-elon    5.577088e-03
-len     1.695515e-01
-wid     2.760373e-03
-fat     7.099604e+00
-f1     -4.412743e-04
-f2      2.441023e-03
-f3      6.501204e-04
-f4      0.000000e+00
-loss    1.289027e-07
+elon    1.130322e-02
+len     3.256648e-01
+wid     5.826324e-03
+f1     -2.680782e-04
+f2     -2.472932e-03
+f3      5.332251e-03
+f4     -0.000000e+00
+loss    2.940895e-07
 dtype: float64
 
 Intercepto del modelo Lasso:
-0.7162750490559711
+0.2772814639970196
 </pre></div>
 </div>
 </div>
@@ -596,27 +595,26 @@ Intercepto del modelo Lasso:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.59
-Test set score: 0.66
-Number of features used: 13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.25
+Test set score: 0.33
+Number of features used: 12
 Coeficientes del modelo lasso001:
-mag     1.022849e+00
-slat   -2.163464e-02
-slon    6.103477e-03
-elat    1.443582e-02
-elon    9.277690e-03
-len     1.329007e-01
-wid     9.106679e-04
-fat     7.640309e+00
-f1     -6.663740e-04
-f2      9.927145e-04
-f3      1.946659e-03
-f4      9.585565e-03
-loss    1.143144e-07
+mag     2.085277e+00
+slat   -3.496292e-02
+slon    1.487790e-03
+elat    6.610278e-03
+elon    1.078612e-02
+len     2.824790e-01
+wid     3.351305e-03
+f1     -6.745159e-04
+f2     -7.067784e-03
+f3      1.123411e-02
+f4     -2.222175e-03
+loss    2.913002e-07
 dtype: float64
 
 Intercepto del modelo lasso001:
-0.803312439470272
+-0.07284336963033344
 </pre></div>
 </div>
 </div>
@@ -644,27 +642,26 @@ Intercepto del modelo lasso001:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.59
-Test set score: 0.66
-Number of features used: 13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.25
+Test set score: 0.33
+Number of features used: 12
 Coeficientes del modelo lasso00001:
-mag     1.039166e+00
-slat   -2.339887e-02
-slon    5.486804e-03
-elat    1.674618e-02
-elon    1.015659e-02
-len     1.322325e-01
-wid     8.844667e-04
-fat     7.645438e+00
-f1     -6.756783e-04
-f2      9.715061e-04
-f3      1.961393e-03
-f4      9.774258e-03
-loss    1.141645e-07
+mag     2.102171e+00
+slat   -3.672660e-02
+slon    8.712739e-04
+elat    8.898865e-03
+elon    1.166160e-02
+len     2.820274e-01
+wid     3.326751e-03
+f1     -6.829800e-04
+f2     -7.113115e-03
+f3      1.131723e-02
+f4     -2.355945e-03
+loss    2.912714e-07
 dtype: float64
 
 Intercepto del modelo lasso00001:
-0.8018051980000815
+-0.07503666609775572
 </pre></div>
 </div>
 </div>
@@ -685,8 +682,8 @@ Intercepto del modelo lasso00001:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.59
-Test set score: 0.66
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training set score: 0.25
+Test set score: 0.33
 </pre></div>
 </div>
 </div>
@@ -732,7 +729,7 @@ Test set score: 0.66
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7666f707726e5ab7cf9ca70baeec786ded75ac77eebf3491f85ac16005377e58.png" src="_images/7666f707726e5ab7cf9ca70baeec786ded75ac77eebf3491f85ac16005377e58.png" />
+<img alt="_images/fdef8f163e5f6cc9aee9719c910065255e1bbab922f6e68dc1b7a1ebf32cee60.png" src="_images/fdef8f163e5f6cc9aee9719c910065255e1bbab922f6e68dc1b7a1ebf32cee60.png" />
 </div>
 </div>
 </section>
@@ -762,153 +759,155 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------</span>
+<span class="c1"># Paso 1: Importar los paquetes necesarios</span>
+<span class="c1"># ------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_percentage_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.diagnostic</span><span class="w"> </span><span class="kn">import</span> <span class="n">acorr_ljungbox</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">jarque_bera</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>  <span class="c1"># Agregar importación de time</span>
 
-<span class="c1"># Ensure grid_lasso and grid_ridge are loaded</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 2: Cargar los modelos entrenados</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Asegurarse de que los modelos estén cargados</span>
 <span class="k">if</span> <span class="s1">&#39;grid_lasso&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;grid_ridge&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">load</span>
     <span class="n">grid_lasso</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;grid_lasso.joblib&#39;</span><span class="p">)</span>
     <span class="n">grid_ridge</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;grid_ridge.joblib&#39;</span><span class="p">)</span>
 
-<span class="c1"># Haciendo predicciones con el mejor modelo de Lasso</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 3: Hacer predicciones con los modelos Lasso y Ridge</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Predicciones con el mejor modelo de Lasso</span>
 <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">grid_lasso</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Haciendo predicciones con el mejor modelo de Ridge</span>
+<span class="c1"># Predicciones con el mejor modelo de Ridge</span>
 <span class="n">y_pred_ridge</span> <span class="o">=</span> <span class="n">grid_ridge</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Calculando las métricas para Lasso</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 4: Calcular las métricas para Lasso</span>
+<span class="c1"># ------------------------</span>
 <span class="n">mape_lasso</span> <span class="o">=</span> <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span>
 <span class="n">rmse_lasso</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">))</span>
 <span class="n">r2_lasso</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)</span>
 
-<span class="c1"># Calculando Ljung-Box p-value para Lasso</span>
+<span class="c1"># Ljung-Box p-value para Lasso</span>
 <span class="n">lb_test_lasso</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred_lasso</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
 <span class="n">lb_p_value_lasso</span> <span class="o">=</span> <span class="n">lb_test_lasso</span><span class="p">[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Accede al valor p del primer lag (lag 10)</span>
 
-<span class="c1"># Calculando Jarque-Bera p-value para Lasso</span>
+<span class="c1"># Jarque-Bera p-value para Lasso</span>
 <span class="n">jb_p_value_lasso</span> <span class="o">=</span> <span class="n">jarque_bera</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred_lasso</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># Calculando las métricas para Ridge</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 5: Calcular las métricas para Ridge</span>
+<span class="c1"># ------------------------</span>
 <span class="n">mape_ridge</span> <span class="o">=</span> <span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)</span>
 <span class="n">rmse_ridge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">))</span>
 <span class="n">r2_ridge</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)</span>
 
-<span class="c1"># Calculando Ljung-Box p-value para Ridge</span>
+<span class="c1"># Ljung-Box p-value para Ridge</span>
 <span class="n">lb_test_ridge</span> <span class="o">=</span> <span class="n">acorr_ljungbox</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred_ridge</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
 <span class="n">lb_p_value_ridge</span> <span class="o">=</span> <span class="n">lb_test_ridge</span><span class="p">[</span><span class="s1">&#39;lb_pvalue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Accede al valor p del primer lag (lag 10)</span>
 
-<span class="c1"># Calculando Jarque-Bera p-value para Ridge</span>
+<span class="c1"># Jarque-Bera p-value para Ridge</span>
 <span class="n">jb_p_value_ridge</span> <span class="o">=</span> <span class="n">jarque_bera</span><span class="p">(</span><span class="n">y_test</span> <span class="o">-</span> <span class="n">y_pred_ridge</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 6: Crear DataFrames con los resultados</span>
+<span class="c1"># ------------------------</span>
 <span class="c1"># Resultados para Lasso</span>
-<span class="n">metrics_lasso</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;MAPE&quot;</span><span class="p">:</span> <span class="n">mape_lasso</span><span class="p">,</span>
-    <span class="s2">&quot;RMSE&quot;</span><span class="p">:</span> <span class="n">rmse_lasso</span><span class="p">,</span>
-    <span class="s2">&quot;R Cuadrado&quot;</span><span class="p">:</span> <span class="n">r2_lasso</span><span class="p">,</span>
-    <span class="s2">&quot;Ljung-Box p-value&quot;</span><span class="p">:</span> <span class="n">lb_p_value_lasso</span><span class="p">,</span>
-    <span class="s2">&quot;Jarque-Bera p-value&quot;</span><span class="p">:</span> <span class="n">jb_p_value_lasso</span>
-<span class="p">}</span>
+<span class="n">resultados_lasso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Lasso&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MAPE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mape_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rmse_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;R Cuadrado&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r2_lasso</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Ljung-Box Test p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lb_p_value_lasso</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Jarque-Bera p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jb_p_value_lasso</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;N/A&quot;</span><span class="p">]</span>  <span class="c1"># Tiempo de entrenamiento no disponible</span>
+<span class="p">})</span>
 
 <span class="c1"># Resultados para Ridge</span>
-<span class="n">metrics_ridge</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;MAPE&quot;</span><span class="p">:</span> <span class="n">mape_ridge</span><span class="p">,</span>
-    <span class="s2">&quot;RMSE&quot;</span><span class="p">:</span> <span class="n">rmse_ridge</span><span class="p">,</span>
-    <span class="s2">&quot;R Cuadrado&quot;</span><span class="p">:</span> <span class="n">r2_ridge</span><span class="p">,</span>
-    <span class="s2">&quot;Ljung-Box p-value&quot;</span><span class="p">:</span> <span class="n">lb_p_value_ridge</span><span class="p">,</span>
-    <span class="s2">&quot;Jarque-Bera p-value&quot;</span><span class="p">:</span> <span class="n">jb_p_value_ridge</span>
-<span class="p">}</span>
+<span class="n">resultados_ridge</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ridge&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MAPE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mape_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;RMSE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rmse_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;R Cuadrado&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">r2_ridge</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Ljung-Box Test p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lb_p_value_ridge</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Jarque-Bera p-value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jb_p_value_ridge</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;N/A&quot;</span><span class="p">]</span>  <span class="c1"># Tiempo de entrenamiento no disponible</span>
+<span class="p">})</span>
 
-<span class="c1"># Crear un DataFrame combinado para las métricas de Lasso y Ridge</span>
-<span class="n">metrics_combined_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;Lasso&quot;</span><span class="p">:</span> <span class="n">metrics_lasso</span><span class="p">,</span>
-    <span class="s2">&quot;Ridge&quot;</span><span class="p">:</span> <span class="n">metrics_ridge</span>
-<span class="p">})</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 7: Combinar los resultados en un solo DataFrame</span>
+<span class="c1"># ------------------------</span>
+<span class="n">resultados_combinados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resultados_lasso</span><span class="p">,</span> <span class="n">resultados_ridge</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Redondear los valores a dos decimales</span>
-<span class="n">metrics_combined_df</span> <span class="o">=</span> <span class="n">metrics_combined_df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># Mostrar la tabla combinada</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 8: Mostrar los resultados</span>
+<span class="c1"># ------------------------</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas combinadas para Lasso y Ridge:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">metrics_combined_df</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resultados_combinados</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">grid_ridge</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;grid_ridge.joblib&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Haciendo predicciones con el mejor modelo de Lasso</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">grid_lasso</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># Haciendo predicciones con el mejor modelo de Ridge</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">y_pred_ridge</span> <span class="o">=</span> <span class="n">grid_ridge</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\pipeline.py:787,</span> in <span class="ni">Pipeline.predict</span><span class="nt">(self, X, **params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">785</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">_routing_enabled</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">transform</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter</span><span class="p">(</span><span class="n">with_final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">787</span>         <span class="n">Xt</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xt</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span> <span class="c1"># metadata routing enabled</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\_set_output.py:319,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">319</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\preprocessing\_data.py:1062,</span> in <span class="ni">StandardScaler.transform</span><span class="nt">(self, X, copy)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1059</span> <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1061</span> <span class="n">copy</span> <span class="o">=</span> <span class="n">copy</span> <span class="k">if</span> <span class="n">copy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span>
-<span class="ne">-&gt; </span><span class="mi">1062</span> <span class="n">X</span> <span class="o">=</span> <span class="n">validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1063</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1064</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1065</span>     <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csr&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1067</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">FLOAT_DTYPES</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span>     <span class="n">force_writeable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span>     <span class="n">ensure_all_finite</span><span class="o">=</span><span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1073</span> <span class="k">if</span> <span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_mean</span><span class="p">:</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\validation.py:2919,</span> in <span class="ni">validate_data</span><span class="nt">(_estimator, X, y, reset, validate_separately, skip_check_array, **check_params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2835</span> <span class="k">def</span><span class="w"> </span><span class="nf">validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2836</span>     <span class="n">_estimator</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2837</span>     <span class="o">/</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2843</span>     <span class="o">**</span><span class="n">check_params</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2844</span> <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2845</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Validate input data and set or check feature names and counts of the input.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2846</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">2847</span><span class="sd">     This helper function should be used in an estimator that requires input</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2917</span><span class="sd">         validated.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2918</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">2919</span>     <span class="n">_check_feature_names</span><span class="p">(</span><span class="n">_estimator</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2920</span>     <span class="n">tags</span> <span class="o">=</span> <span class="n">get_tags</span><span class="p">(</span><span class="n">_estimator</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2921</span>     <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">tags</span><span class="o">.</span><span class="n">target_tags</span><span class="o">.</span><span class="n">required</span><span class="p">:</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\validation.py:2777,</span> in <span class="ni">_check_feature_names</span><span class="nt">(estimator, X, reset)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2774</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">missing_names</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unexpected_names</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2775</span>     <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;Feature names must be in the same order as they were in fit.</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">2777</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: The feature names should match those that were passed during fit.
-<span class="n">Feature</span> <span class="n">names</span> <span class="n">unseen</span> <span class="n">at</span> <span class="n">fit</span> <span class="n">time</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">fat</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Métricas combinadas para Lasso y Ridge:
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Modelo</th>
+      <th>MAPE</th>
+      <th>RMSE</th>
+      <th>R Cuadrado</th>
+      <th>Ljung-Box Test p-value</th>
+      <th>Jarque-Bera p-value</th>
+      <th>CPU time (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Lasso</td>
+      <td>8658017849098115.00</td>
+      <td>18.86</td>
+      <td>0.33</td>
+      <td>0.9364</td>
+      <td>0.0000</td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Ridge</td>
+      <td>8943370414620937.00</td>
+      <td>18.83</td>
+      <td>0.33</td>
+      <td>0.9320</td>
+      <td>0.0000</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>
