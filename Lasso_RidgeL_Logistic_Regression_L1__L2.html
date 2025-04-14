@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -630,7 +630,7 @@ Mejor puntuación (R²/Accuracy): 0.9026640243084154
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b94af4d86082c6a1fe0030eb4288a3a69b813d8fc6b2c77c49313fa9a69d3e04.png" src="_images/b94af4d86082c6a1fe0030eb4288a3a69b813d8fc6b2c77c49313fa9a69d3e04.png" />
+<img alt="_images/fe77dab0fd0e7a128bf6a75855afde4162fdff16cbd3619e0b672d705273f793.png" src="_images/fe77dab0fd0e7a128bf6a75855afde4162fdff16cbd3619e0b672d705273f793.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -659,7 +659,7 @@ Mejor puntuación (R²/Accuracy): 0.9026640243084154
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9858d1b658ee3c0c1a0bcbaaffeb92364eb8ca3bac57e3d5342ebf39ae08a4c7.png" src="_images/9858d1b658ee3c0c1a0bcbaaffeb92364eb8ca3bac57e3d5342ebf39ae08a4c7.png" />
+<img alt="_images/c66c728c7c2a6a1c362647b0ae14d0cf572caf024f2563585f62185429e2594a.png" src="_images/c66c728c7c2a6a1c362647b0ae14d0cf572caf024f2563585f62185429e2594a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -826,15 +826,15 @@ AUC (L2): 0.5186
 <span class="n">logistic_l2</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">logistic_l2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
+<span class="c1"># Calcular las predicciones para L2</span>
+<span class="n">y_pred_l2</span> <span class="o">=</span> <span class="n">logistic_l2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
 <span class="c1"># Calcular las probabilidades predichas para L2</span>
 <span class="n">y_pred_proba_l2</span> <span class="o">=</span> <span class="n">logistic_l2</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># Calcular las nuevas métricas para L2</span>
 <span class="n">precision_l2</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
 <span class="n">recall_l2</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="n">accuracy_l2</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">)</span>
-<span class="n">f1_l2</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="n">auc_l2</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba_l2</span><span class="p">)</span>
 <span class="n">accuracy_l2</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">)</span>
 <span class="n">f1_l2</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
 <span class="n">auc_l2</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba_l2</span><span class="p">)</span>
@@ -861,16 +861,10 @@ AUC (L2): 0.5186
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">44</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="n">y_pred_proba_l2</span> <span class="o">=</span> <span class="n">logistic_l2</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="c1"># Calcular las nuevas métricas para L2</span>
-<span class="ne">---&gt; </span><span class="mi">44</span> <span class="n">precision_l2</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="n">recall_l2</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">accuracy_l2</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_l2</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;y_pred_l2&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Métricas para Logistic L1 y L2:
+            Precision Recall Accuracy F1-Score   AUC
+Logistic L1      0.89   0.90     0.90     0.89  0.87
+Logistic L2      0.86   0.89     0.89     0.86  0.80
 </pre></div>
 </div>
 </div>
