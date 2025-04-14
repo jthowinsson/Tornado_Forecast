@@ -1,8 +1,8 @@
 # Tornados en Estados Unidos (1950–2022)
 
 <p align="center">
-  <img src="Portada_Tornado.png" alt="Portada Tornado" width="300">
-</p>
+  <img src="_static/Portada_Tornado.png" alt="Portada Tornado" width="300">
+</p>>
 
 Desde 1950 hasta 2022, Estados Unidos ha sido escenario de miles de tornados, convirtiéndose en uno de los países más afectados por este tipo de fenómenos meteorológicos extremos. A lo largo de estas más de siete décadas, los tornados han causado estragos tanto en vidas humanas como en la infraestructura económica, dejando una profunda huella en comunidades vulnerables, especialmente en regiones como el llamado "Tornado Alley".
 
