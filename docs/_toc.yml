@@ -3,18 +3,37 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: Tornados_EDA
-- file: KNN_(k-Nearest Neighbors)
-- file: RIDGE_(Regresión con Penalización L2)
-- file: Regresion_Lasso
-- file: XGBoost_Método de Boosting
-- file: SVR_(Support Vector Regression)
-- file: Naive_Bayes
-- file: Lasso_RidgeL_Logistic_Regression_L1__L2
-- file: Random Forest
-- file: SVM_ (Support Vector Machine)
-- file: Autoencoders
-- file: RNN_(Red Neuronal Recurrente)
-- file: Árbol de Decisión (Decision Tree)
-- file: HistGradientBoostingRegressor
+parts:
+  - caption: Análisis Exploratorio
+    chapters:
+      - file: 1_Tornados_EDA
+  - caption: Modelos de Regresión
+    chapters:
+      - file: 2_KNN_(k-Nearest_Neighbors)
+      - file: 3_Linear_Regressor
+      - file: 4_RIDGE_(Regresión_con_Penalización_L2)
+      - file: 5_Regresion_Lasso
+      - file: 6_Random_Forest_Regressor
+      - file: 7_XGBoost
+      - file: 8_Support_Vector_Regression_-_SVR
+  - caption: Modelos de Clasificación
+    chapters:
+      - file: 9_Clasificación_Bayesiana
+      - file: 10_K-Nearest_Neighbors_KNN_-_Clasificación
+      - file: 11_Penalty_Logistic_Regression_L1__L2
+      - file: 12_Random_Forest_Classification
+      - file: 13_XGBoost_Método_de_Boosting
+      - file: 14_Support_Vector_Machine_-_SVM
+      - file: 15_Decision_Tree_Model
+      - file: 16_Autoencoders
+      - file: 17_Red_Neuronal_Recurrente_RNN
+  - caption: Modelo Original Vs HistGradientBoosting Regressor y de Clasificación
+    chapters:
+      - file: 18_HistGradientBoostingRegressor
+      - file: 19_HistGradientBoostingRegressor_Clasificación
+      - file: 20_HistGradientBoostingRegressor_Modelo_Original
+      - file: 21_Comparación_de_Modelos_de_Regresión_Vs_HistGradientBoostingRegressor
+      - file: 22_Comparación_de_Modelos_de_Clasificación_Vs_HistGradientBoostingRegressor_Clasificación
+
+
+

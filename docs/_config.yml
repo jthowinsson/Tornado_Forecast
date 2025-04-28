@@ -1,11 +1,27 @@
+# _config.yml
+
+# Configuración básica del libro
 title: "Tornado Forecast"
-author: "Jesús D. Zamora Th., Gregory J. Melendéz A., Yliceth Ramos, DLH"
+author: "Jesús D. Zamora Th., Gregory J. Melendéz A."
 logo: "Logo_Tornados.png"
 
+# Configuración del repositorio
 repository:
   url: "https://github.com/jthowinsson/Tornado_Forecast"
   branch: main
 
+# Configuración de la salida HTML
 html:
   use_repository_button: true
   use_issues_button: true
+
+# Configuración para ejecutar notebooks
+execute:
+  execute_notebooks: force
+  allow_errors: true
+
+# Configuración de Sphinx (si es necesario)
+sphinx:
+  config:
+    nb_render_plugin: "default"
+
