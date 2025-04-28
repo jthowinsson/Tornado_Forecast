@@ -1,0 +1,1510 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metricas Para Hist Gradient Boosting Classifier &#8212; Tornado Forecast</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '19 HistGradientBoostingRegressor Clasificación';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Logo_Tornados.png" class="logo__image only-light" alt="Tornado Forecast - Home"/>
+    <script>document.write(`<img src="_static/Logo_Tornados.png" class="logo__image only-dark" alt="Tornado Forecast - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Tornados en Estados Unidos (1950–2022)
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jthowinsson/Tornado_Forecast" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jthowinsson/Tornado_Forecast/issues/new?title=Issue%20on%20page%20%2F19 HistGradientBoostingRegressor Clasificación.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/19 HistGradientBoostingRegressor Clasificación.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Metricas Para Hist Gradient Boosting Classifier</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Metricas Para Hist Gradient Boosting Classifier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-comparacion-de-metricas-de-clasificacion">Tabla de Comparación de metricas de clasificación</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># type: ignore</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">for</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;/kaggle/input&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+
+<span class="n">ruta</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\jthow\iCloudDrive\Documents\3_Maestria_Estadistica_UNINORTE\3_Tercer_Semestre\Machine_Learning\tornados.csv.zip&#39;</span>  
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">ruta</span><span class="p">)</span>  
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>om              0
+yr              0
+mo              0
+dy              0
+date            0
+time            0
+tz              0
+datetime_utc    0
+st              0
+stf             0
+mag             0
+inj             0
+fat             0
+loss            0
+slat            0
+slon            0
+elat            0
+elon            0
+len             0
+wid             0
+ns              0
+sn              0
+f1              0
+f2              0
+f3              0
+f4              0
+fc              0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mglearn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mglearn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (0.2.0)
+Requirement already satisfied: numpy in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.26.0)
+Requirement already satisfied: matplotlib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (3.8.0)
+Requirement already satisfied: scikit-learn in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.6.1)
+Requirement already satisfied: pandas in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.1.1)
+Requirement already satisfied: pillow in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (10.0.1)
+Requirement already satisfied: cycler in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (0.12.1)
+Requirement already satisfied: imageio in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (2.31.6)
+Requirement already satisfied: joblib in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from mglearn) (1.3.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.2.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (4.43.1)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (1.4.5)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (23.2)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (2.8.2)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from matplotlib-&gt;mglearn) (6.1.1)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: tzdata&gt;=2022.1 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from pandas-&gt;mglearn) (2023.3)
+Requirement already satisfied: scipy&gt;=1.6.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (1.10.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from scikit-learn-&gt;mglearn) (3.2.0)
+Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;mglearn) (3.17.0)
+Requirement already satisfied: six&gt;=1.5 in c:\users\jthow\miniconda3\envs\ml_venv\lib\site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;mglearn) (1.16.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.0.1 -&gt; 25.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear la columna &#39;mortality&#39; en el DataFrame original</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;mortality&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Renombrar el DataFrame a &#39;mortality_target&#39;</span>
+<span class="n">mortality_target</span> <span class="o">=</span> <span class="n">df</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Crear la columna &#39;mortality&#39; con 0 si &#39;fat&#39; es 0, y 1 si &#39;fat&#39; es mayor que 0</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;mortality&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Contar la cantidad de ceros y unos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cantidad de ceros:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mortality&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cantidad de unos:&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;mortality&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Asignar el DataFrame modificado a &#39;tornados.target&#39;</span>
+<span class="n">tornados_target</span> <span class="o">=</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cantidad de ceros: 67120
+Cantidad de unos: 1573
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>  <span class="c1"># Importar HistGradientBoostingClassifier</span>
+
+<span class="c1"># Definir las variables X y y</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">tornados_target</span><span class="p">[[</span><span class="s1">&#39;om&#39;</span><span class="p">,</span> <span class="s1">&#39;yr&#39;</span><span class="p">,</span> <span class="s1">&#39;mo&#39;</span><span class="p">,</span> <span class="s1">&#39;dy&#39;</span><span class="p">,</span> <span class="s1">&#39;stf&#39;</span><span class="p">,</span> <span class="s1">&#39;mag&#39;</span><span class="p">,</span> <span class="s1">&#39;inj&#39;</span><span class="p">,</span> <span class="s1">&#39;loss&#39;</span><span class="p">,</span> <span class="s1">&#39;slat&#39;</span><span class="p">,</span> <span class="s1">&#39;slon&#39;</span><span class="p">,</span> <span class="s1">&#39;elat&#39;</span><span class="p">,</span> <span class="s1">&#39;elon&#39;</span><span class="p">,</span> <span class="s1">&#39;len&#39;</span><span class="p">,</span> <span class="s1">&#39;wid&#39;</span><span class="p">,</span> <span class="s1">&#39;ns&#39;</span><span class="p">,</span> <span class="s1">&#39;sn&#39;</span><span class="p">,</span> <span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="s1">&#39;f2&#39;</span><span class="p">,</span> <span class="s1">&#39;f3&#39;</span><span class="p">,</span> <span class="s1">&#39;f4&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mortality&#39;</span><span class="p">]</span>
+
+<span class="c1"># Dividir los datos en conjunto de entrenamiento y prueba</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Inicializar el modelo HistGradientBoostingClassifier</span>
+<span class="n">hist_gb</span> <span class="o">=</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Entrenar el modelo</span>
+<span class="n">hist_gb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Evaluación del modelo</span>
+<span class="n">train_score</span> <span class="o">=</span> <span class="n">hist_gb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">test_score</span> <span class="o">=</span> <span class="n">hist_gb</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training score: </span><span class="si">{</span><span class="n">train_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test score: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training score: 0.99
+Test score: 0.98
+</pre></div>
+</div>
+</div>
+</div>
+<section id="metricas-para-hist-gradient-boosting-classifier">
+<h1>Metricas Para Hist Gradient Boosting Classifier<a class="headerlink" href="#metricas-para-hist-gradient-boosting-classifier" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ------------------------</span>
+<span class="c1"># Paso 1: Importar los paquetes necesarios</span>
+<span class="c1"># ------------------------</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>  <span class="c1"># Cambiar por HistGradientBoostingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">precision_score</span><span class="p">,</span> 
+    <span class="n">recall_score</span><span class="p">,</span> 
+    <span class="n">accuracy_score</span><span class="p">,</span> 
+    <span class="n">f1_score</span><span class="p">,</span> 
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.stats.diagnostic</span><span class="w"> </span><span class="kn">import</span> <span class="n">acorr_ljungbox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">jarque_bera</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>  <span class="c1"># Importar time para medir el tiempo de entrenamiento</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 2: Cargar los datos</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Suponiendo que X_train, X_test, y_train, y_test ya están definidas</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 3: Definir el pipeline y el grid de hiperparámetros</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Definir el pipeline para el modelo de HistGradientBoostingClassifier</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+<span class="p">])</span>
+
+<span class="c1"># Definir el grid de hiperparámetros para HistGradientBoostingClassifier</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;model__max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+    <span class="s1">&#39;model__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s1">&#39;model__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 4: Entrenar el modelo con GridSearchCV</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Medir el tiempo de entrenamiento</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># Realizar GridSearchCV para el modelo</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Calcular el tiempo total de entrenamiento</span>
+<span class="n">training_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+<span class="c1"># Obtener el mejor modelo</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Guardar el modelo entrenado</span>
+<span class="n">dump</span><span class="p">(</span><span class="n">grid_search</span><span class="p">,</span> <span class="s1">&#39;grid_hgbc.joblib&#39;</span><span class="p">)</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 5: Hacer predicciones con el mejor modelo</span>
+<span class="c1"># ------------------------</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 6: Calcular las métricas de clasificación</span>
+<span class="c1"># ------------------------</span>
+<span class="c1"># Convertir las predicciones y valores verdaderos a variables de clasificación binaria</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 7: Crear DataFrame con los resultados</span>
+<span class="c1"># ------------------------</span>
+<span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HistGradientBoostingClassifier optimizado (GridSearchCV)&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Precision&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Recall&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;F1-Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+    <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">training_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>  <span class="c1"># Incluir el tiempo de entrenamiento</span>
+<span class="p">})</span>
+
+<span class="c1"># ------------------------</span>
+<span class="c1"># Paso 8: Mostrar los resultados</span>
+<span class="c1"># ------------------------</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas para el modelo de HistGradientBoostingClassifier:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resultados_hgbc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Métricas para el modelo de HistGradientBoostingClassifier:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Modelo</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>Accuracy</th>
+      <th>F1-Score</th>
+      <th>AUC</th>
+      <th>CPU time (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>HistGradientBoostingClassifier optimizado (Gri...</td>
+      <td>0.72</td>
+      <td>0.37</td>
+      <td>0.98</td>
+      <td>0.49</td>
+      <td>0.68</td>
+      <td>24.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="tabla-de-comparacion-de-metricas-de-clasificacion">
+<h1>Tabla de Comparación de metricas de clasificación<a class="headerlink" href="#tabla-de-comparacion-de-metricas-de-clasificacion" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+<th class="head"><p>Precision</p></th>
+<th class="head"><p>Recall</p></th>
+<th class="head"><p>Accuracy</p></th>
+<th class="head"><p>F1-Score</p></th>
+<th class="head"><p>AUC</p></th>
+<th class="head"><p>CPU time (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Naive Bayes + GridSearch</p></td>
+<td><p>0.33</p></td>
+<td><p>0.67</p></td>
+<td><p>0.94</p></td>
+<td><p>0.44</p></td>
+<td><p>0.91</p></td>
+<td><p>0.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>KNN optimizado (GridSearchCV)</p></td>
+<td><p>0.97</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.97</p></td>
+<td><p>55.73</p></td>
+</tr>
+<tr class="row-even"><td><p>Logistic L1</p></td>
+<td><p>0.89</p></td>
+<td><p>0.90</p></td>
+<td><p>0.90</p></td>
+<td><p>0.89</p></td>
+<td><p>0.87</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic L2</p></td>
+<td><p>0.86</p></td>
+<td><p>0.89</p></td>
+<td><p>0.89</p></td>
+<td><p>0.86</p></td>
+<td><p>0.80</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>RandomForestRegressor optimizado (GridSearchCV)</p></td>
+<td><p>0.02</p></td>
+<td><p>1.00</p></td>
+<td><p>0.02</p></td>
+<td><p>0.04</p></td>
+<td><p>0.50</p></td>
+<td><p>1406.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>XGBRegressor</p></td>
+<td><p>0.03</p></td>
+<td><p>0.99</p></td>
+<td><p>0.21</p></td>
+<td><p>0.05</p></td>
+<td><p>0.59</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>SVM (kernel linear, sin SMOTE)</p></td>
+<td><p>1.00</p></td>
+<td><p>0.08</p></td>
+<td><p>0.97</p></td>
+<td><p>0.15</p></td>
+<td><p>0.90</p></td>
+<td><p>38.08</p></td>
+</tr>
+<tr class="row-odd"><td><p>SVM (kernel linear, class_weight=balanced)</p></td>
+<td><p>0.23</p></td>
+<td><p>0.84</p></td>
+<td><p>0.90</p></td>
+<td><p>0.37</p></td>
+<td><p>0.94</p></td>
+<td><p>196.96</p></td>
+</tr>
+<tr class="row-even"><td><p>HistGradientBoostingClassifier optimizado (GridSearchCV)</p></td>
+<td><p>0.72</p></td>
+<td><p>0.37</p></td>
+<td><p>0.98</p></td>
+<td><p>0.49</p></td>
+<td><p>0.68</p></td>
+<td><p>33.63</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">precision_recall_fscore_support</span><span class="p">,</span> 
+    <span class="n">accuracy_score</span><span class="p">,</span> 
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_hist_gradient_boosting_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Entrenar y evaluar un HistGradientBoostingClassifier con GridSearchCV.</span>
+<span class="sd">    </span>
+<span class="sd">    Parámetros:</span>
+<span class="sd">    X_train, X_test: Features de entrenamiento y prueba</span>
+<span class="sd">    y_train, y_test: Etiquetas de entrenamiento y prueba</span>
+<span class="sd">    </span>
+<span class="sd">    Retorna:</span>
+<span class="sd">    DataFrame con métricas de rendimiento del modelo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Definir pipeline</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+    <span class="p">])</span>
+    
+    <span class="c1"># Grid de hiperparámetros más exhaustivo y eficiente</span>
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;model__max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+        <span class="s1">&#39;model__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+        <span class="s1">&#39;model__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+        <span class="s1">&#39;model__min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+        <span class="s1">&#39;model__l2_regularization&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Configuración de cross-validation estratificada</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="c1"># Medir tiempo de entrenamiento</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    
+    <span class="c1"># Realizar GridSearchCV</span>
+    <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+        <span class="n">pipeline</span><span class="p">,</span> 
+        <span class="n">param_grid</span><span class="p">,</span> 
+        <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> 
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular tiempo de entrenamiento</span>
+    <span class="n">training_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+    
+    <span class="c1"># Obtener mejor modelo</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+    
+    <span class="c1"># Guardar modelo</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">grid_search</span><span class="p">,</span> <span class="s1">&#39;grid_hgbc_optimized.joblib&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Predicciones</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular métricas</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Calcular precisión, recall, y F1-score</span>
+        <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span>
+            <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># Calcular AUC de manera robusta</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Intentar calcular probabilidades para AUC</span>
+            <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># Si falla, establecer AUC como None</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="c1"># Crear DataFrame de resultados</span>
+        <span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+            <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HistGradientBoostingClassifier optimizado&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;Precision&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;Recall&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;F1-Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">auc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;N/A&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">training_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="p">})</span>
+        
+        <span class="k">return</span> <span class="n">resultados_hgbc</span>
+    
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al calcular métricas: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Uso del método (asumiendo que X_train, X_test, y_train, y_test están definidos)</span>
+<span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">train_hist_gradient_boosting_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas para el modelo de HistGradientBoostingClassifier:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resultados_hgbc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1595,</span> in <span class="ni">Parallel._get_outputs</span><span class="nt">(self, iterator, pre_dispatch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1594</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">1595</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1597</span> <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1598</span>     <span class="c1"># The generator has been garbage collected before being fully</span>
+<span class="g g-Whitespace">   </span><span class="mi">1599</span>     <span class="c1"># consumed. This aborts the remaining tasks if possible and warn</span>
+<span class="g g-Whitespace">   </span><span class="mi">1600</span>     <span class="c1"># the user if necessary.</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1707,</span> in <span class="ni">Parallel._retrieve</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1704</span> <span class="k">if</span> <span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span>
+<span class="g g-Whitespace">   </span><span class="mi">1705</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1706</span>         <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASK_PENDING</span><span class="p">)):</span>
+<span class="ne">-&gt; </span><span class="mi">1707</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="k">continue</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\model_selection\_search.py:1024,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="k">return</span> <span class="n">results</span>
+<span class="ne">-&gt; </span><span class="mi">1024</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1026</span> <span class="c1"># multimetric is determined here because in the case of a callable</span>
+<span class="g g-Whitespace">   </span><span class="mi">1027</span> <span class="c1"># self.scoring the return type is only known after calling</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\model_selection\_search.py:1571,</span> in <span class="ni">GridSearchCV._run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1570</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1571</span> <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\model_selection\_search.py:970,</span> in <span class="ni">BaseSearchCV.fit.&lt;locals&gt;.evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="nb">print</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span>         <span class="s2">&quot;Fitting </span><span class="si">{0}</span><span class="s2"> folds for each of </span><span class="si">{1}</span><span class="s2"> candidates,&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>         <span class="s2">&quot; totalling </span><span class="si">{2}</span><span class="s2"> fits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span>             <span class="n">n_splits</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">,</span> <span class="n">n_candidates</span> <span class="o">*</span> <span class="n">n_splits</span>
+<span class="g g-Whitespace">    </span><span class="mi">967</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">968</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">970</span> <span class="n">out</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="n">clone</span><span class="p">(</span><span class="n">base_estimator</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>         <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>         <span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span>         <span class="n">train</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span>         <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span>         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>         <span class="n">split_progress</span><span class="o">=</span><span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>         <span class="n">candidate_progress</span><span class="o">=</span><span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span>         <span class="o">**</span><span class="n">fit_and_score_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">981</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">982</span>     <span class="k">for</span> <span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span> <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">983</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">routed_params</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">986</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">988</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\parallel.py:77,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">iterable_with_config</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="p">(</span><span class="n">_with_config</span><span class="p">(</span><span class="n">delayed_func</span><span class="p">,</span> <span class="n">config</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">77</span> <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1952,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1950</span> <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1952</span> <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1648,</span> in <span class="ni">Parallel._get_outputs</span><span class="nt">(self, iterator, pre_dispatch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1647</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exception</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">-&gt; </span><span class="mi">1648</span> <span class="bp">self</span><span class="o">.</span><span class="n">_abort</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1649</span> <span class="k">raise</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1559,</span> in <span class="ni">Parallel._abort</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1558</span>     <span class="n">ensure_ready</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_managed_backend</span>
+<span class="ne">-&gt; </span><span class="mi">1559</span>     <span class="n">backend</span><span class="o">.</span><span class="n">abort_everything</span><span class="p">(</span><span class="n">ensure_ready</span><span class="o">=</span><span class="n">ensure_ready</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1560</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aborted</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\_parallel_backends.py:632,</span> in <span class="ni">LokyBackend.abort_everything</span><span class="nt">(self, ensure_ready)</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Shutdown the workers and restart a new one with the same parameters</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">632</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">terminate</span><span class="p">(</span><span class="n">kill_workers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\executor.py:87,</span> in <span class="ni">MemmappingExecutor.terminate</span><span class="nt">(self, kill_workers)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submit_resize_lock</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">87</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder_manager</span><span class="o">.</span><span class="n">_clean_temporary_resources</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span>         <span class="n">force</span><span class="o">=</span><span class="n">kill_workers</span><span class="p">,</span> <span class="n">allow_non_empty</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\_memmapping_reducer.py:610,</span> in <span class="ni">TemporaryResourcesManager._clean_temporary_resources</span><span class="nt">(self, context_id, force, allow_non_empty)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span>     <span class="k">for</span> <span class="n">context_id</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_temp_folders</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">610</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_clean_temporary_resources</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span>             <span class="n">context_id</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">allow_non_empty</span><span class="o">=</span><span class="n">allow_non_empty</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\_memmapping_reducer.py:621,</span> in <span class="ni">TemporaryResourcesManager._clean_temporary_resources</span><span class="nt">(self, context_id, force, allow_non_empty)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span>     <span class="c1"># Some workers have failed and the ref counted might</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="c1"># be off. The workers should have shut down by this</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="c1"># time so forcefully clean up the files.</span>
+<span class="ne">--&gt; </span><span class="mi">621</span>     <span class="n">resource_tracker</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span>         <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="s2">&quot;file&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:183,</span> in <span class="ni">ResourceTracker.unregister</span><span class="nt">(self, name, rtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Unregister a named resource with resource tracker.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">183</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_running</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="s2">&quot;UNREGISTER&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rtype</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:95,</span> in <span class="ni">ResourceTracker.ensure_running</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="c1"># resource tracker was launched before, is it still running?</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_alive</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>         <span class="c1"># =&gt; still alive</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>         <span class="k">return</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:170,</span> in <span class="ni">ResourceTracker._check_alive</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="s2">&quot;PROBE&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">except</span> <span class="ne">BrokenPipeError</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:197,</span> in <span class="ni">ResourceTracker._send</span><span class="nt">(self, cmd, name, rtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">rtype</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">197</span> <span class="n">nbytes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fd</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="k">assert</span> <span class="n">nbytes</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="ne">OSError</span>: [Errno 22] Invalid argument
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">104</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>         <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span> <span class="c1"># Uso del método (asumiendo que X_train, X_test, y_train, y_test están definidos)</span>
+<span class="ne">--&gt; </span><span class="mi">104</span> <span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">train_hist_gradient_boosting_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="c1"># Mostrar resultados</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas para el modelo de HistGradientBoostingClassifier:&quot;</span><span class="p">)</span>
+
+<span class="nn">Cell In[6], line 56,</span> in <span class="ni">train_hist_gradient_boosting_classifier</span><span class="nt">(X_train, X_test, y_train, y_test)</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="c1"># Realizar GridSearchCV</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="n">pipeline</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="n">param_grid</span><span class="p">,</span> 
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">56</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="c1"># Calcular tiempo de entrenamiento</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="n">training_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\base.py:1389,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1382</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1385</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1387</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1388</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1389</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\model_selection\_search.py:1034,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1032</span>     <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">multimetric_</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1033</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_refit_for_multimetric</span><span class="p">(</span><span class="n">first_test_score</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1034</span>         <span class="n">refit_metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span>
+<span class="g g-Whitespace">   </span><span class="mi">1036</span> <span class="c1"># For multi-metric evaluation, store the best_index_, best_params_ and</span>
+<span class="g g-Whitespace">   </span><span class="mi">1037</span> <span class="c1"># best_score_ iff refit is one of the scorer names</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span> <span class="c1"># In single metric evaluation, refit_metric is &quot;score&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">multimetric_</span><span class="p">:</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1327,</span> in <span class="ni">Parallel.__exit__</span><span class="nt">(self, exc_type, exc_value, traceback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1325</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calling</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1326</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_abort</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1327</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminate_and_reset</span><span class="p">()</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1359,</span> in <span class="ni">Parallel._terminate_and_reset</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calling</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_managed_backend</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1359</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\_parallel_backends.py:622,</span> in <span class="ni">LokyBackend.terminate</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="k">def</span><span class="w"> </span><span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span>         <span class="c1"># Don&#39;t terminate the workers as we want to reuse them in later</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span>         <span class="c1"># calls, but cleanup the temporary resources that the Parallel call</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span>         <span class="c1"># created. This &#39;hack&#39; requires a private, low-level operation.</span>
+<span class="ne">--&gt; </span><span class="mi">622</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">_temp_folder_manager</span><span class="o">.</span><span class="n">_clean_temporary_resources</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>             <span class="n">context_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span>     <span class="bp">self</span><span class="o">.</span><span class="n">reset_batch_stats</span><span class="p">()</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\_memmapping_reducer.py:625,</span> in <span class="ni">TemporaryResourcesManager._clean_temporary_resources</span><span class="nt">(self, context_id, force, allow_non_empty)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span>         <span class="n">resource_tracker</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span>             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="s2">&quot;file&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">625</span>         <span class="n">resource_tracker</span><span class="o">.</span><span class="n">maybe_unlink</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>             <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="s2">&quot;file&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="c1"># When forcing clean-up, try to delete the folder even if some</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span> <span class="c1"># files are still in it. Otherwise, try to delete the folder</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="n">allow_non_empty</span> <span class="o">|=</span> <span class="n">force</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:188,</span> in <span class="ni">ResourceTracker.maybe_unlink</span><span class="nt">(self, name, rtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span> <span class="k">def</span><span class="w"> </span><span class="nf">maybe_unlink</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rtype</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Decrement the refcount of a resource, and delete it if it hits 0&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">188</span>     <span class="bp">self</span><span class="o">.</span><span class="n">ensure_running</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="s2">&quot;MAYBE_UNLINK&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rtype</span><span class="p">)</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:95,</span> in <span class="ni">ResourceTracker.ensure_running</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fd</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>         <span class="c1"># resource tracker was launched before, is it still running?</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_alive</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>             <span class="c1"># =&gt; still alive</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="k">return</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="c1"># =&gt; dead, launch it again</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:170,</span> in <span class="ni">ResourceTracker._check_alive</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Check for the existence of the resource tracker process.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_send</span><span class="p">(</span><span class="s2">&quot;PROBE&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">except</span> <span class="ne">BrokenPipeError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>     <span class="k">return</span> <span class="kc">False</span>
+
+<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:197,</span> in <span class="ni">ResourceTracker._send</span><span class="nt">(self, cmd, name, rtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;name too long&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cmd</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">rtype</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">197</span> <span class="n">nbytes</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fd</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="k">assert</span> <span class="n">nbytes</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="ne">OSError</span>: [Errno 22] Invalid argument
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Modelo</p></th>
+<th class="head"><p>Precision</p></th>
+<th class="head"><p>Recall</p></th>
+<th class="head"><p>Accuracy</p></th>
+<th class="head"><p>F1-Score</p></th>
+<th class="head"><p>AUC</p></th>
+<th class="head"><p>CPU time (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Naive Bayes + GridSearch</p></td>
+<td><p>0.33</p></td>
+<td><p>0.67</p></td>
+<td><p>0.94</p></td>
+<td><p>0.44</p></td>
+<td><p>0.91</p></td>
+<td><p>0.61</p></td>
+</tr>
+<tr class="row-odd"><td><p>KNN optimizado (GridSearchCV)</p></td>
+<td><p>0.97</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.97</p></td>
+<td><p>55.73</p></td>
+</tr>
+<tr class="row-even"><td><p>Logistic L1</p></td>
+<td><p>0.89</p></td>
+<td><p>0.90</p></td>
+<td><p>0.90</p></td>
+<td><p>0.89</p></td>
+<td><p>0.87</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Logistic L2</p></td>
+<td><p>0.86</p></td>
+<td><p>0.89</p></td>
+<td><p>0.89</p></td>
+<td><p>0.86</p></td>
+<td><p>0.80</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>RandomForestRegressor optimizado (GridSearchCV)</p></td>
+<td><p>0.02</p></td>
+<td><p>1.00</p></td>
+<td><p>0.02</p></td>
+<td><p>0.04</p></td>
+<td><p>0.50</p></td>
+<td><p>1406.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>XGBRegressor</p></td>
+<td><p>0.03</p></td>
+<td><p>0.99</p></td>
+<td><p>0.21</p></td>
+<td><p>0.05</p></td>
+<td><p>0.59</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>SVM (kernel linear, sin SMOTE)</p></td>
+<td><p>1.00</p></td>
+<td><p>0.08</p></td>
+<td><p>0.97</p></td>
+<td><p>0.15</p></td>
+<td><p>0.90</p></td>
+<td><p>38.08</p></td>
+</tr>
+<tr class="row-odd"><td><p>SVM (kernel linear, class_weight=balanced)</p></td>
+<td><p>0.23</p></td>
+<td><p>0.84</p></td>
+<td><p>0.90</p></td>
+<td><p>0.37</p></td>
+<td><p>0.94</p></td>
+<td><p>196.96</p></td>
+</tr>
+<tr class="row-even"><td><p>HistGradientBoostingClassifier optimizado (GridSearchCV)</p></td>
+<td><p>0.72</p></td>
+<td><p>0.37</p></td>
+<td><p>0.98</p></td>
+<td><p>0.49</p></td>
+<td><p>0.68</p></td>
+<td><p>33.63</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>HistGradientBoostingClassifier optimizado</strong></p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.98</p></td>
+<td><p>0.96</p></td>
+<td><p>371.55</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistGradientBoostingClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">precision_recall_fscore_support</span><span class="p">,</span> 
+    <span class="n">accuracy_score</span><span class="p">,</span> 
+    <span class="n">roc_auc_score</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_hist_gradient_boosting_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Entrenar y evaluar un HistGradientBoostingClassifier con GridSearchCV.</span>
+<span class="sd">    </span>
+<span class="sd">    Parámetros:</span>
+<span class="sd">    X_train, X_test: Features de entrenamiento y prueba</span>
+<span class="sd">    y_train, y_test: Etiquetas de entrenamiento y prueba</span>
+<span class="sd">    </span>
+<span class="sd">    Retorna:</span>
+<span class="sd">    DataFrame con métricas de rendimiento del modelo</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Definir pipeline</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+        <span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">HistGradientBoostingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))</span>
+    <span class="p">])</span>
+    
+    <span class="c1"># Grid de hiperparámetros más exhaustivo y eficiente</span>
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;model__max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span>
+        <span class="s1">&#39;model__max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+        <span class="s1">&#39;model__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+        <span class="s1">&#39;model__min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+        <span class="s1">&#39;model__l2_regularization&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># Configuración de cross-validation estratificada</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="c1"># Medir tiempo de entrenamiento</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    
+    <span class="c1"># Realizar GridSearchCV</span>
+    <span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+        <span class="n">pipeline</span><span class="p">,</span> 
+        <span class="n">param_grid</span><span class="p">,</span> 
+        <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> 
+        <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular tiempo de entrenamiento</span>
+    <span class="n">training_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+    
+    <span class="c1"># Obtener mejor modelo</span>
+    <span class="n">best_model</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+    
+    <span class="c1"># Guardar modelo</span>
+    <span class="n">dump</span><span class="p">(</span><span class="n">grid_search</span><span class="p">,</span> <span class="s1">&#39;grid_hgbc_optimized.joblib&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Predicciones</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="c1"># Calcular métricas</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Calcular precisión, recall, y F1-score</span>
+        <span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">precision_recall_fscore_support</span><span class="p">(</span>
+            <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;weighted&#39;</span>
+        <span class="p">)</span>
+        
+        <span class="c1"># Verificar el número de clases para AUC</span>
+        <span class="n">unique_classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+        
+        <span class="c1"># Calcular AUC de manera robusta</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_classes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># Para problemas binarios</span>
+            <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_classes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># Para problemas multiclase</span>
+            <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;ovr&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">auc</span> <span class="o">=</span> <span class="kc">None</span>
+        
+        <span class="c1"># Crear DataFrame de resultados</span>
+        <span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+            <span class="s1">&#39;Modelo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HistGradientBoostingClassifier optimizado&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;Precision&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">precision</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;Recall&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">recall</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;Accuracy&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;F1-Score&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">auc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;N/A&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;CPU time (s)&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">training_time</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+        <span class="p">})</span>
+        
+        <span class="k">return</span> <span class="n">resultados_hgbc</span>
+    
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error al calcular métricas: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Uso del método (asumiendo que X_train, X_test, y_train, y_test están definidos)</span>
+<span class="n">resultados_hgbc</span> <span class="o">=</span> <span class="n">train_hist_gradient_boosting_classifier</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Métricas para el modelo de HistGradientBoostingClassifier:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">resultados_hgbc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Métricas para el modelo de HistGradientBoostingClassifier:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Modelo</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>Accuracy</th>
+      <th>F1-Score</th>
+      <th>AUC</th>
+      <th>CPU time (s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>HistGradientBoostingClassifier optimizado</td>
+      <td>0.98</td>
+      <td>0.98</td>
+      <td>0.98</td>
+      <td>0.98</td>
+      <td>0.96</td>
+      <td>371.55</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Metricas Para Hist Gradient Boosting Classifier</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-de-comparacion-de-metricas-de-clasificacion">Tabla de Comparación de metricas de clasificación</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jesús D. Zamora Th., Gregory J. Melendéz A., Yliceth Ramos, DLH
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
