@@ -1,39 +1,45 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
 root: intro
 parts:
   - caption: Análisis Exploratorio
     chapters:
-      - file: 1_Tornados_EDA
+      - file: 1 Tornados_EDA.ipynb
+
   - caption: Modelos de Regresión
     chapters:
-      - file: 2_KNN_(k-Nearest_Neighbors)
-      - file: 3_Linear_Regressor
-      - file: 4_RIDGE_(Regresión_con_Penalización_L2)
-      - file: 5_Regresion_Lasso
-      - file: 6_Random_Forest_Regressor
-      - file: 7_XGBoost
-      - file: 8_Support_Vector_Regression_-_SVR
+      - file: 2 K-Nearest Neighbors - Regressor.ipynb
+      - file: 3 Linear Regressor.ipynb
+      - file: 4 Ridge (Regresión con Penalización L2).ipynb
+      - file: 5 Regresion_Lasso.ipynb
+      - file: 6 Random Forest Regressor.ipynb
+      - file: 7 XGBoost Regressor Model.ipynb
+      - file: 8 Support Vector Regression - SVR.ipynb
+
   - caption: Modelos de Clasificación
     chapters:
-      - file: 9_Clasificación_Bayesiana
-      - file: 10_K-Nearest_Neighbors_KNN_-_Clasificación
-      - file: 11_Penalty_Logistic_Regression_L1__L2
-      - file: 12_Random_Forest_Classification
-      - file: 13_XGBoost_Método_de_Boosting
-      - file: 14_Support_Vector_Machine_-_SVM
-      - file: 15_Decision_Tree_Model
-      - file: 16_Autoencoders
-      - file: 17_Red_Neuronal_Recurrente_RNN
-  - caption: Modelo Original Vs HistGradientBoosting Regressor y de Clasificación
+      - file: 9 Clasificación Bayesiana.ipynb
+      - file: 10 K-Nearest Neighbors KNN - Clasificación.ipynb
+      - file: 11 Penalty Logistic Regression_L1__L2.ipynb
+      - file: 12 Random Forest Classification.ipynb
+      - file: 13 XGBoost_Método de Boosting.ipynb
+      - file: 14 Support Vector Machine - SVM.ipynb
+      - file: 15 Decision Tree Model.ipynb
+
+  - caption: Modelos Avanzados
     chapters:
-      - file: 18_HistGradientBoostingRegressor
-      - file: 19_HistGradientBoostingRegressor_Clasificación
-      - file: 20_HistGradientBoostingRegressor_Modelo_Original
-      - file: 21_Comparación_de_Modelos_de_Regresión_Vs_HistGradientBoostingRegressor
-      - file: 22_Comparación_de_Modelos_de_Clasificación_Vs_HistGradientBoostingRegressor_Clasificación
+      - file: 16 Autoencoders.ipynb
+      - file: 17 Red Neuronal Recurrente RNN.ipynb
+
+  - caption: Gradient Boosting
+    chapters:
+      - file: 18 HistGradientBoostingRegressor.ipynb
+      - file: 19 HistGradientBoostingRegressor Clasificación.ipynb
+      - file: 20 HistGradientBoostingRegressor Modelo Original.ipynb
+
+  - caption: Comparación de Modelos
+    chapters:
+      - file: 21 Comparación de Modelos de Regresión Vs HistGradientBoostingRegressor.ipynb
+      - file: 22 Comparación de Modelos de Clasificación Vs HistGradientBoostingRegressorClasisifier.ipynb
 
 
 
