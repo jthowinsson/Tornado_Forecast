@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '10 K-Nearest Neighbors KNN - Clasificación';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lasso_Ridg_Regresión_Logistica Model" href="11%20Penalty%20Logistic%20Regression_L1__L2.html" />
+    <link rel="prev" title="Modelo Naive Bayes" href="9%20Clasificaci%C3%B3n%20Bayesiana.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,57 @@
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1%20Tornados_EDA.html">Importación de los Datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos de Regresión</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2%20K-Nearest%20Neighbors%20-%20Regressor.html">(K-Nearest Neighbors) Regresor</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="3%20Linear%20Regressor.html">Linear Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4%20Ridge%20%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Ridge Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Regresion_Lasso.html">Lasso Regession Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Random%20Forest%20Regressor.html">Random Forest Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7%20XGBoost%20Regressor%20Model.html">XGBoost Regressor Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="8%20Support%20Vector%20Regression%20-%20SVR.html">Metricas para SVR</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos de Clasificación</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="9%20Clasificaci%C3%B3n%20Bayesiana.html">Modelo Naive Bayes</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">K-Nearest Neighbors - KNN Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Penalty%20Logistic%20Regression_L1__L2.html">Lasso_Ridg_Regresión_Logistica Model</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="12%20Random%20Forest%20Classification.html">Random Forest Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20XGBoost_M%C3%A9todo%20de%20Boosting.html">XGBoost Model Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14%20Support%20Vector%20Machine%20-%20SVM.html">Máquinas de soporte vectorial (SVM)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="15%20Decision%20Tree%20Model.html">Decision Tree Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos Avanzados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="16%20Autoencoders.html">Autoencoders Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17%20Red%20Neuronal%20Recurrente%20RNN.html">RNN</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Boosting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="18%20HistGradientBoostingRegressor.html">Hist_Gradient_Boosting_Regressor</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="19%20HistGradientBoostingRegressor%20Clasificaci%C3%B3n.html">Metricas Para Hist Gradient Boosting Classifier</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="20%20HistGradientBoostingRegressor%20Modelo%20Original.html">Metricas para el Modelo Original de Regresión</a></li>
+
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -640,92 +690,6 @@ Cantidad de unos: 1573
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;n_neighbors&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>     <span class="n">training_accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">test_accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="c1"># Graficar los resultados</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\neighbors\_classification.py:446,</span> in <span class="ni">KNeighborsClassifier.score</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span> <span class="k">def</span><span class="w"> </span><span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span><span class="sd">     Return the mean accuracy on the given test data and labels.</span>
-<span class="g g-Whitespace">    </span><span class="mi">420</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="sd">         Mean accuracy of ``self.predict(X)`` w.r.t. `y`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">446</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\base.py:572,</span> in <span class="ni">ClassifierMixin.score</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="sd"> Return the mean accuracy on the given test data and labels.</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span><span class="sd">     Mean accuracy of ``self.predict(X)`` w.r.t. `y`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">570</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
-<span class="ne">--&gt; </span><span class="mi">572</span> <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\neighbors\_classification.py:274,</span> in <span class="ni">KNeighborsClassifier.predict</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span>     <span class="c1"># In that case, we do not need the distances to perform</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span>     <span class="c1"># the weighting so we do not compute them.</span>
-<span class="ne">--&gt; </span><span class="mi">274</span>     <span class="n">neigh_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">return_distance</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="n">neigh_dist</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\neighbors\_base.py:923,</span> in <span class="ni">KNeighborsMixin.kneighbors</span><span class="nt">(self, X, n_neighbors, return_distance)</span>
-<span class="g g-Whitespace">    </span><span class="mi">918</span>     <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">919</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">920</span>             <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> does not work with sparse matrices. Densify the data, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">921</span>             <span class="s2">&quot;or set algorithm=&#39;brute&#39;&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_method</span>
-<span class="g g-Whitespace">    </span><span class="mi">922</span>         <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">923</span>     <span class="n">chunked_results</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">prefer</span><span class="o">=</span><span class="s2">&quot;threads&quot;</span><span class="p">)(</span>
-<span class="g g-Whitespace">    </span><span class="mi">924</span>         <span class="n">delayed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="o">.</span><span class="n">query</span><span class="p">)(</span><span class="n">X</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="n">n_neighbors</span><span class="p">,</span> <span class="n">return_distance</span><span class="p">)</span>
-<span class="nn">    925         for s</span> in <span class="ni">gen_even_slices</span><span class="nt">(X.shape[0], n_jobs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">926</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">927</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">928</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;internal: _fit_method not recognized&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\parallel.py:77,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">iterable_with_config</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="p">(</span><span class="n">_with_config</span><span class="p">(</span><span class="n">delayed_func</span><span class="p">,</span> <span class="n">config</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">77</span> <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config</span><span class="p">)</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1863,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1861</span>     <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_sequential_output</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1862</span>     <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1863</span>     <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1865</span> <span class="c1"># Let&#39;s create an ID that uniquely identifies the current call. If the</span>
-<span class="g g-Whitespace">   </span><span class="mi">1866</span> <span class="c1"># call is interrupted early and that the same instance is immediately</span>
-<span class="g g-Whitespace">   </span><span class="mi">1867</span> <span class="c1"># re-used, this id will be used to prevent workers that were</span>
-<span class="g g-Whitespace">   </span><span class="mi">1868</span> <span class="c1"># concurrently finalizing a task from the previous call to run the</span>
-<span class="g g-Whitespace">   </span><span class="mi">1869</span> <span class="c1"># callback.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1870</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\joblib\parallel.py:1792,</span> in <span class="ni">Parallel._get_sequential_output</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1790</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_dispatched_batches</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1791</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_dispatched_tasks</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">-&gt; </span><span class="mi">1792</span> <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1793</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_completed_tasks</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">   </span><span class="mi">1794</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_progress</span><span class="p">()</span>
-
-<span class="nn">File ~\miniconda3\envs\ml_venv\lib\site-packages\sklearn\utils\parallel.py:139,</span> in <span class="ni">_FuncWrapper.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">139</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -2303,6 +2267,24 @@ RMSLE Valid: 0.09181801416368035
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="9%20Clasificaci%C3%B3n%20Bayesiana.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modelo Naive Bayes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11%20Penalty%20Logistic%20Regression_L1__L2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lasso_Ridg_Regresión_Logistica Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2335,7 +2317,7 @@ RMSLE Valid: 0.09181801416368035
   <div class="footer-item">
     
 <p class="component-author">
-By Jesús D. Zamora Th., Gregory J. Melendéz A., Yliceth Ramos, DLH
+By Jesús D. Zamora Th., Gregory J. Melendéz A.
 </p>
 
   </div>

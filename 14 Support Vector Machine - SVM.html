@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '14 Support Vector Machine - SVM';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Decision Tree Model" href="15%20Decision%20Tree%20Model.html" />
+    <link rel="prev" title="XGBoost Model Classification" href="13%20XGBoost_M%C3%A9todo%20de%20Boosting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,7 +179,57 @@
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Análisis Exploratorio</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1%20Tornados_EDA.html">Importación de los Datos</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos de Regresión</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2%20K-Nearest%20Neighbors%20-%20Regressor.html">(K-Nearest Neighbors) Regresor</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="3%20Linear%20Regressor.html">Linear Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4%20Ridge%20%28Regresi%C3%B3n%20con%20Penalizaci%C3%B3n%20L2%29.html">Ridge Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5%20Regresion_Lasso.html">Lasso Regession Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6%20Random%20Forest%20Regressor.html">Random Forest Regressor Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7%20XGBoost%20Regressor%20Model.html">XGBoost Regressor Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="8%20Support%20Vector%20Regression%20-%20SVR.html">Metricas para SVR</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos de Clasificación</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="9%20Clasificaci%C3%B3n%20Bayesiana.html">Modelo Naive Bayes</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="10%20K-Nearest%20Neighbors%20KNN%20-%20Clasificaci%C3%B3n.html">K-Nearest Neighbors - KNN Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11%20Penalty%20Logistic%20Regression_L1__L2.html">Lasso_Ridg_Regresión_Logistica Model</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="12%20Random%20Forest%20Classification.html">Random Forest Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13%20XGBoost_M%C3%A9todo%20de%20Boosting.html">XGBoost Model Classification</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Máquinas de soporte vectorial (SVM)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="15%20Decision%20Tree%20Model.html">Decision Tree Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modelos Avanzados</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="16%20Autoencoders.html">Autoencoders Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17%20Red%20Neuronal%20Recurrente%20RNN.html">RNN</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gradient Boosting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="18%20HistGradientBoostingRegressor.html">Hist_Gradient_Boosting_Regressor</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="19%20HistGradientBoostingRegressor%20Clasificaci%C3%B3n.html">Metricas Para Hist Gradient Boosting Classifier</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="20%20HistGradientBoostingRegressor%20Modelo%20Original.html">Metricas para el Modelo Original de Regresión</a></li>
+
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -1275,6 +1325,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="13%20XGBoost_M%C3%A9todo%20de%20Boosting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">XGBoost Model Classification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="15%20Decision%20Tree%20Model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Decision Tree Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1316,7 +1384,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Jesús D. Zamora Th., Gregory J. Melendéz A., Yliceth Ramos, DLH
+By Jesús D. Zamora Th., Gregory J. Melendéz A.
 </p>
 
   </div>
